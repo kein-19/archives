@@ -86,25 +86,10 @@
                     </label>
                     <div class="col-sm-5">
                         <?php
-                        $statussiswa = array(
-                            null => '- Silahkan Pilih -',
-                            'Kandung' => 'Kandung',
-                            'Yatim' => 'Yatim',
-                            'Piatu' => 'Piatu',
-                            'Yatim Piatu' => 'Yatim Piatu',
-                            'Tiri' => 'Tiri',
-                            'Angkat' => 'Angkat'
-                        );
-                        $pilih = array(null);
-                        echo form_dropdown(
-                            'statussiswa',
-                            $statussiswa,
-                            $pilih,
-                            "class='form-control form-control-sm'"
-                        );
+                        echo cmb_dinamis('kode_lemari', 'tbl_lemari', 'lemari', 'kode_lemari');
                         ?>
                     </div>
-                    <?= form_error('statussiswa', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?= form_error('kode_lemari', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -113,22 +98,7 @@
                     </label>
                     <div class="col-sm-5">
                         <?php
-                        $statussiswa = array(
-                            null => '- Silahkan Pilih -',
-                            'Kandung' => 'Kandung',
-                            'Yatim' => 'Yatim',
-                            'Piatu' => 'Piatu',
-                            'Yatim Piatu' => 'Yatim Piatu',
-                            'Tiri' => 'Tiri',
-                            'Angkat' => 'Angkat'
-                        );
-                        $pilih = array(null);
-                        echo form_dropdown(
-                            'statussiswa',
-                            $statussiswa,
-                            $pilih,
-                            "class='form-control form-control-sm'"
-                        );
+                        echo cmb_dinamis('kode_kotak', 'tbl_kotak', 'kotak', 'kode_kotak');
                         ?>
                     </div>
                     <?= form_error('statussiswa', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
