@@ -22,7 +22,7 @@ class Auth_siswa extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Login - Siswa';
+            $data['title'] = 'Login - Arsip';
             $this->load->view('templates/siswa/auth_header', $data);
             $this->load->view('siswa_baru/login');
             $this->load->view('templates/siswa/auth_footer');
@@ -130,7 +130,7 @@ class Auth_siswa extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Arsip', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim');
         $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim');
@@ -145,7 +145,7 @@ class Auth_siswa extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Arsip Nasional (NISN)', 'required|trim');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
         // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
@@ -159,7 +159,7 @@ class Auth_siswa extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Pendaftaran Siswa Baru SMK Merah Putih ' . date('Y') . ' / ' . date('Y', strtotime('+1 years'));
+            $data['title'] = 'Pendaftaran Arsip Baru SMK Merah Putih ' . date('Y') . ' / ' . date('Y', strtotime('+1 years'));
             $this->load->view('templates/siswa/auth_header', $data);
             $this->load->view('siswa_baru/registration');
             $this->load->view('templates/siswa/auth_footer');

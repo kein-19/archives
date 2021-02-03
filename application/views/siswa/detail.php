@@ -22,7 +22,7 @@
         </div>
         <div class="card-body ml-md-4">
 
-            <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Keterangan Pribadi Siswa</h3>
+            <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Keterangan Pribadi Arsip</h3>
 
             <!-- <div class="row">
                 <p class="card-text col-sm-5">Nomor Formulir</p>
@@ -73,7 +73,7 @@
                 <p class="card-text col-sm-7"><?= $tbl_siswa['warganegara']; ?></p>
             </div>
             <div class="row">
-                <p class="card-text col-sm-5">Status Siswa</p>
+                <p class="card-text col-sm-5">Status Arsip</p>
                 <p class="card-text col-sm-7"><?= $tbl_siswa['statussiswa']; ?></p>
             </div>
             <div class="row">
@@ -89,7 +89,7 @@
                 <p class="card-text col-sm-7"><?= $tbl_siswa['email']; ?></p>
             </div>
             <hr>
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Siswa</h3>
+            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Arsip</h3>
             <div class="row">
                 <p class="card-text col-sm-5">Alamat</p>
                 <p class="card-text col-sm-7"><?= $tbl_siswa['alamat']; ?></p>
@@ -138,13 +138,13 @@
             </div>
             <hr>
 
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Siswa Sebelumnya</h3>
+            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Arsip Sebelumnya</h3>
             <!-- <div class="row">
                 <p class="card-text col-sm-5">SMP/MTs</p>
                 <p class="card-text col-sm-7"><?= $tbl_siswa['asal_sekolah']; ?></p>
             </div> -->
             <div class="row">
-                <p class="card-text col-sm-5">Nomor Induk Siswa Nasional (NISN)</p>
+                <p class="card-text col-sm-5">Nomor Induk Arsip Nasional (NISN)</p>
                 <p class="card-text col-sm-7"><?= $tbl_siswa['nisn']; ?></p>
             </div>
             <div class="row">
@@ -153,7 +153,7 @@
             </div>
             <hr>
 
-            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Siswa</h3>
+            <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Arsip</h3>
             <div class="row">
                 <p class="card-text col-sm-5">Nama Orang Tua/Wali</p>
                 <p class="card-text col-sm-7"><?= $tbl_siswa['nama_ot']; ?></p>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Siswa extends CI_Controller
+class Arsip extends CI_Controller
 {
     public function __construct()
     {
@@ -15,9 +15,9 @@ class Siswa extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Daftar Siswa';
+        $data['title'] = 'Daftar Arsip';
         $data['tbl_user'] = $this->Model_user->getAdmin();
-        // $data['tbl_siswa'] = $this->Model_siswa->getAllSiswa();
+        // $data['tbl_siswa'] = $this->Model_siswa->getAllArsip();
 
         // load library
         $this->load->library('pagination');
@@ -37,7 +37,7 @@ class Siswa extends CI_Controller
         $this->db->or_like('kelurahan', $data['keyword']);
         $this->db->from('tbl_siswa');
         $config['total_rows'] = $this->db->count_all_results();
-        // $config['total_rows'] = $this->Model_siswa->countAllSiswa();
+        // $config['total_rows'] = $this->Model_siswa->countAllArsip();
         $data['total_rows'] = $config['total_rows'];
         $config['per_page'] = 5;
 
@@ -50,7 +50,7 @@ class Siswa extends CI_Controller
 
         $data['start'] = $this->uri->segment(3);
 
-        $data['tbl_siswa'] = $this->Model_siswa->getSiswaLimit($config['per_page'], $data['start'], $data['keyword']);
+        $data['tbl_siswa'] = $this->Model_siswa->getArsipLimit($config['per_page'], $data['start'], $data['keyword']);
 
 
         $this->load->view('templates/admin/header', $data);
@@ -69,7 +69,7 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Arsip', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('dari_bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
@@ -84,14 +84,14 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         // $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Arsip Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_siswa.email]', [
             'is_unique' => 'Email sudah terdaftar!'
         ]);
 
-        // Data Orang Tua Siswa
+        // Data Orang Tua Arsip
         $this->form_validation->set_rules('nama_ot', 'Nama Orang Tua/Wali', 'required|trim');
         $this->form_validation->set_rules('alamat_ot', 'Alamat Orang Tua/Wali', 'required|trim');
         $this->form_validation->set_rules('no_hp_ot', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
@@ -102,7 +102,7 @@ class Siswa extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['title'] = 'Tambah Data Siswa';
+            $data['title'] = 'Tambah Data Arsip';
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -132,7 +132,7 @@ class Siswa extends CI_Controller
             $fixkode = $thn . $kodemax;
             // $fixkode = $thn . "-dokuments-" . $bln . $kodemax;
 
-            $this->Model_siswa->tambahDataSiswa($fixkode);
+            $this->Model_siswa->tambahDataArsip($fixkode);
 
             $this->session->set_flashdata('flash', 'ditambahkan');
             redirect('siswa');
@@ -143,8 +143,8 @@ class Siswa extends CI_Controller
     {
 
         $data['tbl_user'] = $this->Model_user->getAdmin();
-        $data['title'] = 'Detail Data Siswa';
-        $data['tbl_siswa'] = $this->Model_siswa->getSiswaId($nis);
+        $data['title'] = 'Detail Data Arsip';
+        $data['tbl_siswa'] = $this->Model_siswa->getArsipId($nis);
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -164,7 +164,7 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Arsip', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('dari_bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
@@ -179,12 +179,12 @@ class Siswa extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         // $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Arsip Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 
-        // Data Orang Tua Siswa
+        // Data Orang Tua Arsip
         $this->form_validation->set_rules('nama_ot', 'Nama Orang Tua/Wali', 'required|trim');
         $this->form_validation->set_rules('alamat_ot', 'Alamat Orang Tua/Wali', 'required|trim');
         $this->form_validation->set_rules('no_hp_ot', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');
@@ -194,8 +194,8 @@ class Siswa extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['title'] = 'Edit Data Siswa';
-            $data['tbl_siswa'] = $this->Model_siswa->getSiswaId($nis);
+            $data['title'] = 'Edit Data Arsip';
+            $data['tbl_siswa'] = $this->Model_siswa->getArsipId($nis);
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -203,7 +203,7 @@ class Siswa extends CI_Controller
             $this->load->view('siswa/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_siswa->editDataSiswa();
+            $this->Model_siswa->editDataArsip();
             $this->session->set_flashdata('flash', 'diupdate');
             redirect('siswa');
         }
@@ -212,7 +212,7 @@ class Siswa extends CI_Controller
 
     public function delete($nis)
     {
-        $this->Model_siswa->deleteSiswa($nis);
+        $this->Model_siswa->deleteArsip($nis);
         $this->session->set_flashdata('flash', 'dihapus');
         redirect('siswa');
     }

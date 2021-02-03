@@ -13,7 +13,7 @@
             <form class="user" method="post" action="">
                 <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Form Tambah Arsip</h3>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
                         Nomor
                     </label>
@@ -21,7 +21,7 @@
                         <input type="text" name="nomor" placeholder="Masukkan Nomor" id="nomor" class="form-control form-control-sm" value="<?= $tbl_dokuments['nomor']; ?>">
                     </div>
                     <?= form_error('nomor', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                </div>
+                </div> -->
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">

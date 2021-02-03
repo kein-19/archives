@@ -3,7 +3,7 @@ const flashData = $('.flash-data').data('flashdata');
 
 if (flashData) {
 	Swal.fire({
-		title: 'Data Siswa',
+		title: 'Data Arsip',
 		text: 'Berhasil ' + flashData,
 		icon: 'success'
 	});

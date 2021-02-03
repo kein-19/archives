@@ -22,11 +22,11 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Data Siswa
+            <i class="fa fa-external-link-square"></i> Data Arsip
 
         </div>
         <div class="panel-body">
-            <div id="dataSiswa"></div>
+            <div id="dataArsip"></div>
         </div>
     </div>
     <!-- end: DYNAMIC TABLE PANEL -->
@@ -53,19 +53,19 @@
             success:function(html){
                 $("#rombel").html(html);
                 var rombel = $("#rombel2").val();
-                loadSiswa(rombel);
+                loadArsip(rombel);
             }
         })
     }
     
-    function loadSiswa(rombel){
+    function loadArsip(rombel){
         var rombel = $("#rombel2").val();
         $.ajax({
             type:'GET',
             url :'<?php echo base_url() ?>index.php/siswa/load_data_siswa_by_rombel',
             data:'rombel='+rombel,
             success:function(html){
-                $("#dataSiswa").html(html);
+                $("#dataArsip").html(html);
             }
         })
     

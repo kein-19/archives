@@ -87,51 +87,40 @@ class Model_dokuments extends CI_Model
         $email = $this->input->post('email', true);
 
         $data = [
-            'id_doc'      => ($fixkode),
-            'nama'                  => htmlspecialchars($nama),
-            'tempat_lahir'          => htmlspecialchars($this->input->post('tempat_lahir', TRUE)),
-            'tanggal_lahir'         => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
-            'jenis_kelamin'         => $this->input->post('jenis_kelamin', TRUE),
-            'kd_agama'              => $this->input->post('agama', TRUE),
-            'warganegara'           => $this->input->post('warganegara', TRUE),
-            'statussiswa'           => $this->input->post('statussiswa', TRUE),
-            'anak_ke'               => htmlspecialchars($this->input->post('anak_ke', TRUE)),
-            'dari__bersaudara'      => htmlspecialchars($this->input->post('dari__bersaudara', TRUE)),
-            'jumlah_saudara'        => htmlspecialchars($this->input->post('jumlah_saudara', TRUE)),
-            'alamat'                => htmlspecialchars($this->input->post('alamat', TRUE)),
-            'rt'                    => htmlspecialchars($this->input->post('rt', TRUE)),
-            'rw'                    => htmlspecialchars($this->input->post('rw', TRUE)),
-            'kelurahan'             => htmlspecialchars($this->input->post('kelurahan', TRUE)),
-            'kecamatan'             => htmlspecialchars($this->input->post('kecamatan', TRUE)),
-            'no_hp'                 => htmlspecialchars($this->input->post('no_hp', TRUE)),
-            'tinggalbersama'        => $this->input->post('tinggalbersama', TRUE),
-            'jarak'                 => htmlspecialchars($this->input->post('jarak', TRUE)),
-            'transport'             => $this->input->post('transport', TRUE),
-            'jurusan'               => $this->input->post('jurusan', TRUE),
-            'asal_sekolah'          => htmlspecialchars($this->input->post('asal_sekolah', TRUE)),
-            'nisn'                  => htmlspecialchars($this->input->post('nisn', TRUE)),
-            'no_sttb'               => htmlspecialchars($this->input->post('no_sttb', TRUE)),
-            'pindahan'              => htmlspecialchars($this->input->post('pindahan', TRUE)),
-            'suratpindah'           => $this->input->post('suratpindah', TRUE),
-            'alasan'                => htmlspecialchars($this->input->post('alasan', TRUE)),
-
-            // data orang tua siswa
-            'nama_ot'               => htmlspecialchars($this->input->post('nama_ot', TRUE)),
-            'alamat_ot'             => htmlspecialchars($this->input->post('alamat_ot', TRUE)),
-            'no_hp_ot'              => htmlspecialchars($this->input->post('no_hp_ot', TRUE)),
-            'pendidikan_ot'         => htmlspecialchars($this->input->post('pendidikan_ot', TRUE)),
-            'pekerjaan_ot'          => htmlspecialchars($this->input->post('pekerjaan_ot', TRUE)),
-            'penghasilan_ot'        => htmlspecialchars($this->input->post('penghasilan_ot', TRUE)),
-
-            // 'name' => htmlspecialchars($this->input->post('name', true)),
-            'email' => htmlspecialchars($email),
-            'image' => 'default.png',
-            'password' => password_hash($this->input->post('tanggal_lahir'), PASSWORD_DEFAULT),
-            'role_id' => 2,
-            'is_active' => 0,
-            'validasi' => 'Belum',
-            'date_created' => time()
+            'nomor'                 => ($fixkode),
+            'title'                 => htmlspecialchars($nama),
+            'jenis'                 => $this->input->post('jenis_kelamin', TRUE),
+            'kelompok_id'           => $this->input->post('agama', TRUE),
+            'tgl_surat'             => htmlspecialchars($this->input->post('tanggal_lahir', TRUE)),
+            'kode_lemari'           => $this->input->post('agama', TRUE),
+            'kode_kotak'            => $this->input->post('agama', TRUE),
+            'deskripsi'             => htmlspecialchars($this->input->post('alamat', TRUE)),
+            
         ];
+
+        // cek jika ada file yang akan diupload
+        $upload_nama_file = $_FILES['nama_file']['name'];
+
+        if ($upload_nama_file) {
+            $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+            $config['max_size']      = '25600';
+            $config['upload_path'] = './assets/archives/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('nama_file')) {
+                $old_nama_file = $data['tbl_dokuments']['nama_file'];
+                if ($old_nama_file != 'default.jpg') {
+                    unlink(FCPATH . 'assets/archives/' . $old_nama_file);
+                }
+                $new_nama_file = $this->upload->data('file_name');
+                $this->db->set('nama_file', $new_nama_file);
+                // $this->Model_dokuments->editDataDokuments($new_nama_file);
+            } else {
+                echo $this->upload->dispay_errors();
+            }
+        }
+
         $this->db->insert('tbl_dokuments', $data);
     }
 
@@ -197,23 +186,23 @@ class Model_dokuments extends CI_Model
         ];
 
         // cek jika ada gambar yang akan diupload
-        $upload_image = $_FILES['image']['name'];
+        $upload_nama_file = $_FILES['nama_file']['name'];
 
-        if ($upload_image) {
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
-            $config['max_size']      = '2048';
-            $config['upload_path'] = './assets/img/profile/';
+        if ($upload_nama_file) {
+            $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+            $config['max_size']      = '25600';
+            $config['upload_path'] = './assets/archives/';
 
             $this->load->library('upload', $config);
 
-            if ($this->upload->do_upload('image')) {
-                $old_image = $data['tbl_dokuments']['image'];
-                if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . 'assets/img/profile/' . $old_image);
+            if ($this->upload->do_upload('nama_file')) {
+                $old_nama_file = $data['tbl_dokuments']['nama_file'];
+                if ($old_nama_file != 'default.jpg') {
+                    unlink(FCPATH . 'assets/archives/' . $old_nama_file);
                 }
-                $new_image = $this->upload->data('file_name');
-                $this->db->set('image', $new_image);
-                // $this->Model_dokuments->editDataDokuments($new_image);
+                $new_nama_file = $this->upload->data('file_name');
+                $this->db->set('nama_file', $new_nama_file);
+                // $this->Model_dokuments->editDataDokuments($new_nama_file);
             } else {
                 echo $this->upload->dispay_errors();
             }
@@ -221,7 +210,7 @@ class Model_dokuments extends CI_Model
 
         // $this->db->set('name', $data);
 
-        // $this->db->set('image', $new_image);
+        // $this->db->set('nama_file', $new_nama_file);
         $this->db->where('id_doc', $this->input->post('id_doc'));
         $this->db->update(
             'tbl_dokuments',
@@ -281,23 +270,23 @@ class Model_dokuments extends CI_Model
         ];
 
         // cek jika ada gambar yang akan diupload
-        $upload_image = $_FILES['image']['name'];
+        $upload_nama_file = $_FILES['nama_file']['name'];
 
-        if ($upload_image) {
+        if ($upload_nama_file) {
             $config['allowed_types'] = 'gif|jpg|jpeg|png';
             $config['max_size']      = '2048';
             $config['upload_path'] = './assets/img/profile/';
 
             $this->load->library('upload', $config);
 
-            if ($this->upload->do_upload('image')) {
-                $old_image = $data['tbl_dokuments']['image'];
-                if ($old_image != 'default.jpg') {
-                    unlink(FCPATH . 'assets/img/profile/' . $old_image);
+            if ($this->upload->do_upload('nama_file')) {
+                $old_nama_file = $data['tbl_dokuments']['nama_file'];
+                if ($old_nama_file != 'default.jpg') {
+                    unlink(FCPATH . 'assets/img/profile/' . $old_nama_file);
                 }
-                $new_image = $this->upload->data('file_name');
-                $this->db->set('image', $new_image);
-                // $this->Model_dokuments->editDataDokuments($new_image);
+                $new_nama_file = $this->upload->data('file_name');
+                $this->db->set('nama_file', $new_nama_file);
+                // $this->Model_dokuments->editDataDokuments($new_nama_file);
             } else {
                 echo $this->upload->dispay_errors();
             }
@@ -306,7 +295,7 @@ class Model_dokuments extends CI_Model
 
         // $this->db->set('name', $data);
 
-        // $this->db->set('image', $new_image);
+        // $this->db->set('nama_file', $new_nama_file);
         $this->db->where('id_doc', $fixkode);
         $this->db->update('tbl_dokuments', $data);
     }

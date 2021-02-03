@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <!-- Daftar Siswa -->
+            <!-- Daftar Arsip -->
 
             <div class="col-sm-12 mx-auto">
 
@@ -15,7 +15,7 @@
 
                 <div class="row mt-3 mb-2">
                     <div class="col-md-4">
-                        <a href="<?= base_url('siswa/add'); ?>" class="btn btn-primary">Tambah Data Siswa</a>
+                        <a href="<?= base_url('siswa/add'); ?>" class="btn btn-primary">Tambah Data Arsip</a>
                     </div>
 
                     <div class="col-md-2">
@@ -42,7 +42,7 @@
                         <tr>
                             <th scope="col" class="align-middle text-center">No</th>
                             <th scope="col" class="align-middle">Nomor Formulir</th>
-                            <th scope="col" class="align-middle">Nama Siswa</th>
+                            <th scope="col" class="align-middle">Nama Arsip</th>
                             <th scope="col" class="align-middle">Email</th>
                             <th scope="col" class="align-middle text-center">Action</th>
                         </tr>

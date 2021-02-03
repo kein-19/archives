@@ -10,7 +10,7 @@
             <table  class="table table-striped table-bordered">
                 <tr><td>Jurusan</td><td><?php echo cmb_dinamis('jurusan', 'tbl_jurusan', 'nama_jurusan', 'kd_jurusan', null, "id='jurusan' onchange='loadData()'") ?></td></tr>
                 <tr><td>Rombel</td><td><div id="rombel"></div></td></tr>
-                <tr><td>Jenis Pembayaran</td><td><?php echo cmb_dinamis('jenis_pembayaran', 'tbl_jenis_pembayaran', 'nama_jenis_pembayaran', 'id_jenis_pembayaran',null,"id='jenis_bayar' onchange='loadSiswa()'")?></td></tr>
+                <tr><td>Jenis Pembayaran</td><td><?php echo cmb_dinamis('jenis_pembayaran', 'tbl_jenis_pembayaran', 'nama_jenis_pembayaran', 'id_jenis_pembayaran',null,"id='jenis_bayar' onchange='loadArsip()'")?></td></tr>
                 <tr><td></td><td><button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export Data</button></td></tr>
             </table>
             </form>
@@ -23,11 +23,11 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Data Siswa
+            <i class="fa fa-external-link-square"></i> Data Arsip
 
         </div>
         <div class="panel-body">
-            <div id="dataSiswa"></div>
+            <div id="dataArsip"></div>
         </div>
     </div>
     <!-- end: DYNAMIC TABLE PANEL -->
@@ -54,12 +54,12 @@
             success:function(html){
                 $("#rombel").html(html);
                 var rombel = $("#rombel2").val();
-                loadSiswa(rombel);
+                loadArsip(rombel);
             }
         })
     }
     
-    function loadSiswa(rombel){
+    function loadArsip(rombel){
         var rombel = $("#rombel2").val();
         var jenis_bayar = $("#jenis_bayar").val();
         $.ajax({
@@ -67,7 +67,7 @@
             url :'<?php echo base_url() ?>index.php/keuangan/load_data_siswa_by_rombel',
             data:'rombel='+rombel+'&jenis_pembayaran='+jenis_bayar,
             success:function(html){
-                $("#dataSiswa").html(html);
+                $("#dataArsip").html(html);
             }
         })
     

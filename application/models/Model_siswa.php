@@ -4,24 +4,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Model_siswa extends CI_Model
 {
     // get data seluruh siswa baru
-    public function getAllSiswa()
+    public function getAllArsip()
     {
         return $this->db->get('tbl_siswa')->result_array();
     }
 
-    public function getSiswa()
+    public function getArsip()
     {
         return $this->db->get_where('tbl_siswa', ['nis' => $this->session->userdata('nis')])->row_array();
     }
 
-    public function getSiswaId($nis)
+    public function getArsipId($nis)
     {
         return $this->db->get_where('tbl_siswa', ['nis' => $nis])->row_array();
     }
 
     // fitur untuk pagination
-    public function getSiswaLimit($limit, $start, $keyword = null)
-    // public function getSiswaLimit($limit, $start)
+    public function getArsipLimit($limit, $start, $keyword = null)
+    // public function getArsipLimit($limit, $start)
     {
         // untuk pencarian
         if ($keyword) {
@@ -34,7 +34,7 @@ class Model_siswa extends CI_Model
         return $this->db->get('tbl_siswa', $limit, $start)->result_array();
     }
 
-    public function countAllSiswa()
+    public function countAllArsip()
     {
         return $this->db->get('tbl_siswa')->num_rows();
     }
@@ -81,7 +81,7 @@ class Model_siswa extends CI_Model
         }
     }
 
-    public function tambahDataSiswa($fixkode)
+    public function tambahDataArsip($fixkode)
     {
 
         $nama = $this->input->post('nama', TRUE);
@@ -136,7 +136,7 @@ class Model_siswa extends CI_Model
         $this->db->insert('tbl_siswa', $data);
     }
 
-    public function editDataSiswa()
+    public function editDataArsip()
     {
 
         $nama = $this->input->post('nama', TRUE);
@@ -203,7 +203,7 @@ class Model_siswa extends CI_Model
                 }
                 $new_image = $this->upload->data('file_name');
                 $this->db->set('image', $new_image);
-                // $this->Model_dokuments->editDataSiswa($new_image);
+                // $this->Model_dokuments->editDataArsip($new_image);
             } else {
                 echo $this->upload->dispay_errors();
             }
@@ -218,7 +218,7 @@ class Model_siswa extends CI_Model
     }
 
 
-    public function deleteSiswa($nis)
+    public function deleteArsip($nis)
     {
         $this->db->delete(
             'tbl_siswa',

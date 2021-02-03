@@ -4,7 +4,7 @@
 
         <div class="header">
             <h3 style="color:white">
-                <center>Masuk Calon Murid</center>
+                <center>Masuk  Murid</center>
             </h3>
         </div>
         <?= $this->session->flashdata('message'); ?>
@@ -27,7 +27,7 @@
         </form>
         <hr>
         <div class="text-center">
-            <a class="text-light" href="<?= base_url('dokuments/registration'); ?>">Pendaftaran Siswa Baru</a>
+            <a class="text-light" href="<?= base_url('dokuments/registration'); ?>">Pendaftaran Arsip Baru</a>
         </div>
     </div>
 </div>

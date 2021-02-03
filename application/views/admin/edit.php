@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <?= form_open_multipart(''); ?>
 
-                    <h3 class="h5 text-gray-900 mt-sm-3 mb-sm-3">Keterangan Pribadi Siswa</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-3 mb-sm-3">Keterangan Pribadi Arsip</h3>
 
                     <div class="row">
                         <div class="col-sm-9">
@@ -151,7 +151,7 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
-                                    Status Siswa
+                                    Status Arsip
                                 </label>
                                 <div class="col-sm-4">
                                     <?php
@@ -234,7 +234,7 @@
                     </div>
                     <hr>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Siswa</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Tempat Tinggal Arsip</h3>
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="alamat">
                             Alamat
@@ -370,7 +370,7 @@
                     </div>
                     <hr>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Siswa Sebelumnya</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Pendidikan Arsip Sebelumnya</h3>
                     <h4 class="h6 text-gray-900 mt-sm-4 mb-sm-3">Asal Sekolah <span class="text-danger">(Wajib diisi)</span></h4>
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="asal_sekolah">
@@ -383,10 +383,10 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="nisn">
-                            Nomor Induk Siswa Nasional (NISN)
+                            Nomor Induk Arsip Nasional (NISN)
                         </label>
                         <div class="col-sm-7">
-                            <input type="text" name="nisn" placeholder="Nomor Induk Siswa Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= $tbl_dokuments['nisn']; ?>">
+                            <input type="text" name="nisn" placeholder="Nomor Induk Arsip Nasional (NISN)" id="nisn" class="form-control form-control-sm" value="<?= $tbl_dokuments['nisn']; ?>">
                         </div>
                         <?= form_error('nisn', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                     </div>
@@ -444,7 +444,7 @@
                     </div>
                     <hr>
 
-                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Siswa</h3>
+                    <h3 class="h5 text-gray-900 mt-sm-5 mb-sm-3">Keterangan Data Orang Tua Arsip</h3>
 
                     <div class="form-group row">
                         <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_ot">

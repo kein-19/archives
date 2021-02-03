@@ -68,7 +68,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
         $this->form_validation->set_rules('warganegara', 'Kewarganegaraan', 'required');
-        $this->form_validation->set_rules('statussiswa', 'Status Siswa', 'required');
+        $this->form_validation->set_rules('statussiswa', 'Status Arsip', 'required');
         $this->form_validation->set_rules('anak_ke', 'Anak ke', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('dari__bersaudara', 'dari bersaudara', 'required|trim|numeric|max_length[3]');
         $this->form_validation->set_rules('jumlah_saudara', 'Jumlah Saudara', 'required|trim|numeric|max_length[3]');
@@ -83,7 +83,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('transport', 'Ke Sekolah dengan', 'required');
         $this->form_validation->set_rules('jurusan', 'Kompetensi Keahlian', 'required');
         $this->form_validation->set_rules('asal_sekolah', 'Asal Sekolah', 'required|trim');
-        $this->form_validation->set_rules('nisn', 'Nomor Induk Siswa Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
+        $this->form_validation->set_rules('nisn', 'Nomor Induk Arsip Nasional (NISN)', 'required|trim|numeric|exact_length[10]');
         $this->form_validation->set_rules('no_sttb', 'Tanggal/Tahun/No.STTB', 'required|trim');
 
         // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
@@ -96,7 +96,7 @@ class User extends CI_Controller
         // ]);
         // $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
-        // Data Orang Tua Siswa
+        // Data Orang Tua Arsip
         $this->form_validation->set_rules('nama_ot', 'Nama Orang Tua/Wali', 'required|trim');
         $this->form_validation->set_rules('alamat_ot', 'Alamat Orang Tua/Wali', 'required|trim');
         $this->form_validation->set_rules('no_hp_ot', 'No. HP', 'required|trim|numeric|min_length[10]|max_length[13]');

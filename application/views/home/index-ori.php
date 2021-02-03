@@ -54,7 +54,7 @@
           <li class="lead font-weight-normal mt-3">Isi Formulir</li>
           <p class="font-weight-light mb-0">Klik dokuments ONLINE</p>
           <p class="font-weight-light mb-0">Isi Formulir Pendaftaran untuk dapat menerima akses masuk ke tahap selanjutnya</p>
-          <li class="lead font-weight-normal mt-3">Login Siswa</li>
+          <li class="lead font-weight-normal mt-3">Login Arsip</li>
           <p class="font-weight-light mb-0">Jika pengisian berhasil anda akan menerima nomor formulir / kode pendaftaran</p>
           <p class="font-weight-light mb-0">Login menggunakan <strong>nomor formulir / kode pendaftaran</strong> dan isi password dengan <strong>tanggal lahir</strong> dibalik (<strong>tahun-bulan-tanggal</strong>)</p>
           <small>Contoh:

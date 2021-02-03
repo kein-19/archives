@@ -1,6 +1,6 @@
 <?php
 
-class Siswa extends CI_Controller
+class Arsip extends CI_Controller
 {
 
     function __construct()

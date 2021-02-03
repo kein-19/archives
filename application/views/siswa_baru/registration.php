@@ -7,7 +7,7 @@
                 <div class="col-lg">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-primary font-weight-bold mb-lg-5">Pendaftaran Siswa Baru<br>
+                            <h1 class="h4 text-primary font-weight-bold mb-lg-5">Pendaftaran Arsip Baru<br>
                                 SMK Merah Putih<br>
                                 Tahun Pelajaran <?= date('Y') . " / " . date('Y', strtotime('+1 years')); ?></h1>
                             <!-- Tahun Pelajaran
@@ -16,7 +16,7 @@
                         </div>
                         <hr>
                         <form class="user" method="post" action="<?= base_url('auth_siswa/registration'); ?>">
-                            <h3 class="h5 text-gray-900 mt-lg-5 mb-lg-3">Keterangan Pribadi Siswa</h3>
+                            <h3 class="h5 text-gray-900 mt-lg-5 mb-lg-3">Keterangan Pribadi Arsip</h3>
                             <!-- <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label">Nama Lengkap</label>
                                 <div class="col-sm-2">
@@ -129,7 +129,7 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label" for="statussiswa">
-                                    Status Siswa
+                                    Status Arsip
                                 </label>
                                 <div class="col-sm-5">
                                     <?php
@@ -205,7 +205,7 @@
                                 </div>
                             </div> -->
 
-                            <h3 class="h5 text-gray-900 mt-lg-5 mb-lg-3">Keterangan Tempat Tinggal Siswa</h3>
+                            <h3 class="h5 text-gray-900 mt-lg-5 mb-lg-3">Keterangan Tempat Tinggal Arsip</h3>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label" for="alamat">
                                     Alamat
@@ -329,7 +329,7 @@
                             </div>
                             <hr>
 
-                            <h3 class="h5 text-gray-900 mt-lg-5 mb-lg-3">Keterangan Pendidikan Siswa Sebelumnya</h3>
+                            <h3 class="h5 text-gray-900 mt-lg-5 mb-lg-3">Keterangan Pendidikan Arsip Sebelumnya</h3>
                             <h4 class="h6 text-gray-900 mt-lg-4 mb-lg-3">Asal Sekolah <span class="text-danger">(Wajib diisi)</span></h4>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label" for="asal_sekolah">
@@ -342,10 +342,10 @@
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-5 col-form-label" for="nisn">
-                                    Nomor Induk Siswa Nasional (NISN)
+                                    Nomor Induk Arsip Nasional (NISN)
                                 </label>
                                 <div class="col-sm-7">
-                                    <input type="text" name="nisn" placeholder="Nomor Induk Siswa Nasional (NISN)" id="nisn" class="form-control" value="<?= set_value('nisn'); ?>">
+                                    <input type="text" name="nisn" placeholder="Nomor Induk Arsip Nasional (NISN)" id="nisn" class="form-control" value="<?= set_value('nisn'); ?>">
                                 </div>
                                 <?= form_error('nisn', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>

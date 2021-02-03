@@ -13,7 +13,7 @@
             <form class="user" method="post" action="">
                 <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Form Tambah Arsip</h3>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
                         Nomor
                     </label>
@@ -21,7 +21,7 @@
                         <input type="text" name="nomor" placeholder="Masukkan Nomor" id="nomor" class="form-control form-control-sm" value="<?= set_value('nomor'); ?>">
                     </div>
                     <?= form_error('nomor', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                </div>
+                </div> -->
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
@@ -64,10 +64,10 @@
                     </label>
                     <div class="col-sm-5">
                         <?php
-                        echo cmb_dinamis('kelompok', 'tbl_kelompok', 'kelompok', 'kelompok_id');
+                        echo cmb_dinamis('kelompok_id', 'tbl_kelompok', 'kelompok', 'kelompok_id');
                         ?>
                     </div>
-                    <?= form_error('kelompok', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?= form_error('kelompok_id', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -101,7 +101,7 @@
                         echo cmb_dinamis('kode_kotak', 'tbl_kotak', 'kotak', 'kode_kotak');
                         ?>
                     </div>
-                    <?= form_error('statussiswa', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?= form_error('kode_kotak', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -119,8 +119,8 @@
                         </label>
                         <div class="col-sm-7">
                                 <div class="custom-file col-form-label col-form-label-sm">
-                                    <input type="file" class="custom-file-input" id="arsip" name="arsip">
-                                    <label class="custom-file-label" for="arsip">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="nama_file" name="nama_file">
+                                    <label class="custom-file-label" for="nama_file">Choose file</label>
                                 </div>
                         </div>
                 </div>

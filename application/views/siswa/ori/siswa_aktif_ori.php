@@ -19,7 +19,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Data Siswa
+            <i class="fa fa-external-link-square"></i> Data Arsip
 
         </div>
         <div class="panel-body">

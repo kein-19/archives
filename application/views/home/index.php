@@ -54,7 +54,7 @@
           <li class="lead font-weight-normal mt-3">Isi Formulir</li>
           <p class="font-weight-light mb-0">Klik Dokuments ONLINE</p>
           <p class="font-weight-light mb-0">Isi Formulir Pendaftaran untuk dapat menerima akses masuk ke tahap selanjutnya</p>
-          <li class="lead font-weight-normal mt-3">Login Siswa</li>
+          <li class="lead font-weight-normal mt-3">Login Arsip</li>
           <p class="font-weight-light mb-0">Jika pengisian berhasil anda akan menerima nomor formulir / kode pendaftaran</p>
           <p class="font-weight-light mb-0">Login menggunakan <strong>nomor formulir / kode pendaftaran</strong> dan isi password dengan <strong>tanggal lahir</strong> dibalik (<strong>tahun-bulan-tanggal</strong>)</p>
           <small>Contoh:
@@ -82,7 +82,7 @@
 </section>
 
 
-<!-- Daftar Calon Siswa -->
+<!-- Daftar  Arsip -->
 <section class="daftar-siswa bg-light">
   <div class="container">
     <div class="row col-lg-10 mx-auto pt-2 mb-4">
@@ -92,7 +92,7 @@
     </div>
 
     <div class="row col-lg-10 mx-auto">
-      <p style="text-indent: 60px;" class="mb-sm-5 text-justify">Calon siswa yang telah terdaftar bisa mencetak Formulir dan menyerahkan ke SMK MERAH PUTIH untuk divalidasi agar menjadi Siswa Baru SMK MERAH PUTIH.</p>
+      <p style="text-indent: 60px;" class="mb-sm-5 text-justify"> siswa yang telah terdaftar bisa mencetak Formulir dan menyerahkan ke SMK MERAH PUTIH untuk divalidasi agar menjadi Arsip Baru SMK MERAH PUTIH.</p>
 
       <div class="row">
         <div class="col-lg">
@@ -118,7 +118,7 @@
               <tr class="table100-head">
                 <th scope="col" class="align-middle">No</th>
                 <th scope="col" class="align-middle">Nomor Formulir</th>
-                <th scope="col" class="align-middle">Nama Calon Siswa</th>
+                <th scope="col" class="align-middle">Nama  Arsip</th>
                 <th scope="col" class="align-middle">Asal Sekolah</th>
                 <th scope="col" class="align-middle">Alamat Rumah</th>
                 <th scope="col" class="align-middle">Validasi</th>

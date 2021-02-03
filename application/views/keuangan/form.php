@@ -1,7 +1,7 @@
 <div class="col-md-6">
     <!-- start: DYNAMIC TABLE PANEL -->
     <div class="panel-heading">
-            <i class="fa fa-external-link-square"></i> Biodata Siswa
+            <i class="fa fa-external-link-square"></i> Biodata Arsip
         </div>
     <div class="panel panel-default">
         <?php echo form_open('keuangan/form'); ?>
