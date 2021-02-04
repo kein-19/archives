@@ -41,6 +41,20 @@
                         <?php
                         $jenis = array(
                             null => '- Silahkan Pilih -',
+                            'L' => 'Laki-laki',
+                            'P' => 'Perempuan'
+                        );
+                        $pilih = $tbl_siswa['jenis_kelamin'];
+                        echo form_dropdown(
+                            'jenis_kelamin',
+                            $jenis_kelamin,
+                            $pilih,
+                            "class='form-control form-control-sm'"
+                        );
+                        ?>
+                        <?php
+                        $jenis = array(
+                            null => '- Silahkan Pilih -',
                             'M' => 'Masuk',
                             'K' => 'Keluar'
                         );
@@ -124,16 +138,7 @@
                                 </div>
                         </div>
                 </div>
-                    <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="penghasilan_ot">
-                            Penghasilan
-                        </label>
-                        <div class="col-sm-7">
-                            <input type="text" name="penghasilan_ot" placeholder="Penghasilan" id="penghasilan_ot" class="form-control form-control-sm" value="<?= $tbl_dokuments['penghasilan_ot']; ?>">
-                        </div>
-                        <?= form_error('penghasilan_ot', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                    </div>
-
+                    
                     <div class="form-group row justify-content-end">
                         <div class="col-sm-2">
                             <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>

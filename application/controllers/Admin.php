@@ -10,8 +10,8 @@ class Admin extends CI_Controller
 
         $this->load->library('form_validation');
         $this->load->model('Model_user');
-        $this->load->model('Model_gallery');
-        $this->load->model('Model_sekolah');
+        // $this->load->model('Model_gallery');
+        // $this->load->model('Model_sekolah');
     }
 
 
@@ -20,8 +20,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['tbl_user'] = $this->Model_user->getAdmin();
 
-        $data['tbl_images'] = $this->Model_gallery->getImageLimit(6, 0);
-        $data['tbl_profile'] = $this->Model_sekolah->getSekolah();
+        // $data['tbl_images'] = $this->Model_gallery->getImageLimit(6, 0);
+        // $data['tbl_profile'] = $this->Model_sekolah->getSekolah();
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);

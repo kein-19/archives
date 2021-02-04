@@ -41,8 +41,8 @@
                         <?php
                         $jenis = array(
                             null => '- Silahkan Pilih -',
-                            'M' => 'Masuk',
-                            'K' => 'Keluar'
+                            'Masuk' => 'Masuk',
+                            'Keluar' => 'Keluar'
                         );
                         $pilih = array(null);
                         echo form_dropdown(
@@ -119,8 +119,8 @@
                         </label>
                         <div class="col-sm-7">
                                 <div class="custom-file col-form-label col-form-label-sm">
-                                    <input type="file" class="custom-file-input" id="nama_file" name="nama_file">
-                                    <label class="custom-file-label" for="nama_file">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                    <label class="custom-file-label" for="image">Choose file</label>
                                 </div>
                         </div>
                 </div>

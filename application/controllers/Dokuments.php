@@ -35,7 +35,7 @@ class Dokuments extends CI_Controller
         $this->db->or_like('nomor', $data['keyword']);
         $this->db->or_like('title', $data['keyword']);
         $this->db->or_like('deskripsi', $data['keyword']);
-        $this->db->or_like('name_file', $data['keyword']);
+        // $this->db->or_like('name_file', $data['keyword']);
         $this->db->from('tbl_dokuments');
         $config['total_rows'] = $this->db->count_all_results();
         $data['total_rows'] = $config['total_rows'];
@@ -48,6 +48,8 @@ class Dokuments extends CI_Controller
         // initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
+        $this->load->model('Kelompok_model', 'kelompok');
+        $data['kdKelompok'] = $this->kelompok->getkdKelompok();
         $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -78,8 +80,8 @@ class Dokuments extends CI_Controller
             $this->load->view('dokuments/add', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->db->select('RIGHT(tbl_dokuments.id_doc,4) as kode', false);
-            $this->db->order_by('id_doc', 'DESC');
+            $this->db->select('RIGHT(tbl_dokuments.nomor,3) as kode', false);
+            $this->db->order_by('nomor', 'DESC');
             $this->db->limit(1);
             $query = $this->db->get('tbl_dokuments'); // cek sudah ada atau belum kodenya
             if ($query->num_rows() <> 0) {
@@ -124,7 +126,7 @@ class Dokuments extends CI_Controller
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
         $this->form_validation->set_rules('kelompok_id', 'Kelompok', 'required');
         $this->form_validation->set_rules('tgl_surat', 'Tanggal Surat', 'required');
-        $this->form_validation->set_rules('kode_lemari', 'Lemari', 'required');
+        $this->form_validation->set_rules('kode_kelompok', 'Lemari', 'required');
         $this->form_validation->set_rules('kode_kotak', 'Kotak', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 

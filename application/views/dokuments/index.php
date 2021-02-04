@@ -41,11 +41,10 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col" class="align-middle text-center">No</th>
+                            <th scope="col" class="align-middle">Nomor Arsip</th>
                             <th scope="col" class="align-middle">Judul</th>
-                            <th scope="col" class="align-middle">Status</th>
                             <th scope="col" class="align-middle">Kelompok</th>
                             <th scope="col" class="align-middle">Tgl Surat</th>
-                            <th scope="col" class="align-middle">Validasi</th>
                             <th scope="col" class="align-middle text-center">Action</th>
                         </tr>
                     </thead>
@@ -61,21 +60,15 @@
                             </tr>
                         <?php endif; ?>
 
-                        <?php foreach ($tbl_dokuments as $sb) : ?>
+                        <?php foreach ($kdKelompok as $sb) : ?>
 
                             <tr>
                                 <th class="align-middle text-center" scope="row"><?= ++$start; ?></th>
-                                <td class="align-middle"><?= $sb['id_doc']; ?></td>
                                 <td class="align-middle"><?= $sb['nomor']; ?></td>
                                 <td class="align-middle"><?= $sb['title']; ?></td>
-                                <td class="align-middle"><?= $sb['email']; ?></td>
-                                <td class="align-middle">
-                                    <?php if ($sb['validasi'] == 'Sudah') : ?>
-                                        <span class="align-middle text-success"><i class="fas fa-fw fa-check"></i> Sudah</span>
-                                    <?php elseif ($sb['validasi'] == 'Belum') : ?>
-                                        <span class="align-middle text-danger"><i class="fas fa-fw fa-exclamation"></i> Belum</span>
-                                    <?php endif; ?>
-                                </td>
+                                <td class="align-middle"><?= $sb['kelompok']; ?></td>
+                                <td class="align-middle"><?= $sb['tgl_surat']; ?></td>
+                                
                                 <td class="align-middle text-center">
                                     <h4><a href="<?= base_url('dokuments/detail/') . $sb['id_doc']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
                                         <a href="<?= base_url('dokuments/edit/') . $sb['id_doc']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
