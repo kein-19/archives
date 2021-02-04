@@ -10,28 +10,22 @@
         </div>
         <div class="card-body ml-md-4">
 
-            <form class="user" method="post" action="">
-                <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Form Tambah Arsip</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <?= form_open_multipart(''); ?>
 
-                <!-- <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
-                        Nomor
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="text" name="nomor" placeholder="Masukkan Nomor" id="nomor" class="form-control form-control-sm" value="<?= set_value('nomor'); ?>">
-                    </div>
-                    <?= form_error('nomor', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                </div> -->
+                    <!-- Image -->
+                    <div class="col-lg-7">
 
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
-                        Title
-                    </label>
-                    <div class="col-sm-7">
-                        <input type="text" name="title" placeholder="Masukkan Title" id="title" class="form-control form-control-sm" value="<?= set_value('title'); ?>">
-                    </div>
-                    <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                </div>
+                        <div class="form-group row">
+                            <label class="col-sm-5 col-form-label col-form-label-sm" for="title">
+                                Title
+                            </label>
+                            <div class="col-sm-7">
+                                <input type="text" name="title" placeholder="Title" id="title" class="form-control form-control-sm" value="<?= set_value('title'); ?>">
+                            </div>
+                            <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                        </div>
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="jenis">
@@ -55,8 +49,7 @@
                     </div>
                     <?= form_error('jenis', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
-                
-                <!-- tambahan dari yang ada -->
+
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="warganegara">
@@ -113,31 +106,36 @@
                     </div>
                     <?= form_error('deskripsi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
-                <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="deskripsi">
+                
+
+                        <!-- <div class="card float-md-right p-md-2">
+                                <img src="<?= base_url('assets/img/profile/') . $tbl_dokuments['image']; ?>" class="card-img rounded mx-auto d-block" style="width: 100px">
+                            </div> -->
+                        <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="image">
                             Upload File Arsip
                         </label>
                         <div class="col-sm-7">
-                                <div class="custom-file col-form-label col-form-label-sm">
-                                    <input type="file" class="custom-file-input" id="image" name="image">
-                                    <label class="custom-file-label" for="image">Choose file</label>
-                                </div>
+                            <div class="custom-file col-form-label col-form-label-sm">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group row">
+
                         </div>
                 </div>
 
-
-                <div class="form-group row justify-content-end mt-sm-5">
-                    <div class="col-sm-3">
-                        <button type="submit" name="tambah" class="btn btn-primary btn-block" role="button">Tambah</button>
-                    </div>
-                </div>
-            </form>
-
+                        <div class="row justify-content-end">
+                            <div class="col-sm-3">
+                                <button type="submit" name="add" class="btn btn-primary btn-block">Tambah</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
         </div>
-
-
     </div>
-    <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->

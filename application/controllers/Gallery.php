@@ -48,7 +48,7 @@ class Gallery extends CI_Controller
     // profile sekolah pada halaman home
     public function addimage()
     {
-        is_logged_in();
+        // is_logged_in();
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
         // $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {

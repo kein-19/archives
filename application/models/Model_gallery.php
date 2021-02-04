@@ -48,7 +48,7 @@ class Model_gallery extends CI_Model
         $upload_image = $_FILES['image']['name'];
 
         if ($upload_image) {
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['allowed_types'] = 'pdf|gif|jpg|jpeg|png';
             $config['max_size']      = '2048';
             $config['upload_path'] = './assets/img/gallery/';
 
