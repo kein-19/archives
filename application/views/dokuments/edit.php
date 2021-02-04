@@ -22,7 +22,7 @@
                                 Title
                             </label>
                             <div class="col-sm-7">
-                                <input type="text" name="title" placeholder="Title" id="title" class="form-control form-control-sm" value="<?= set_value('title'); ?>">
+                                <input type="text" name="title" placeholder="Title" id="title" class="form-control form-control-sm" value="<?= $tbl_dokuments['title']; ?>">
                             </div>
                             <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                         </div>
@@ -68,7 +68,7 @@
                         Tanggal Surat
                     </label>
                     <div class="col-sm-3">
-                        <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= set_value('tgl_surat'); ?>">
+                        <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= $tbl_dokuments['tgl_surat']; ?>">
                     </div>
                     <?= form_error('tgl_surat', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
                 </div>
@@ -102,7 +102,7 @@
                         Deskripsi
                     </label>
                     <div class="col-sm-7">
-                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm" value="<?= set_value('deskripsi'); ?>"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm" value="<?= $tbl_dokuments['deskripsi']; ?>"></textarea>
                     </div>
                     <?= form_error('deskripsi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>

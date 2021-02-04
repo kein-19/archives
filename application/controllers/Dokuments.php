@@ -8,6 +8,9 @@ class Dokuments extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Model_user');
         $this->load->model('Model_dokuments');
+        $this->load->model('Kelompok_Model');
+        $this->load->model('Lemari_Model');
+        $this->load->model('Kotak_Model');
     }
 
     public function index()
@@ -40,6 +43,8 @@ class Dokuments extends CI_Controller
         // initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
+        $this->load->model('Kelompok_model', 'kelompok');
+        $data['kdKelompok'] = $this->kelompok->getkdKelompok();
         $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -63,7 +68,7 @@ class Dokuments extends CI_Controller
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 
         // $this->form_validation->set_rules('title', 'Title', 'required|trim');
-        // $this->form_validation->set_rules('image', 'Dokuments', 'required');
+        // $this->form_validation->set_rules('', 'Dokuments', 'required');
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Add Dokuments';
             $data['tbl_user'] = $this->Model_user->getAdmin();
@@ -97,10 +102,17 @@ class Dokuments extends CI_Controller
         }
     }
 
-    public function editimage($id)
+    public function edit($id)
     {
         is_logged_in();
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
+        $this->form_validation->set_rules('jenis', 'Jenis', 'required');
+        $this->form_validation->set_rules('kelompok_id', 'Kelompok', 'required');
+        $this->form_validation->set_rules('tgl_surat', 'Tanggal Surat', 'required');
+        $this->form_validation->set_rules('kode_lemari', 'Lemari', 'required');
+        $this->form_validation->set_rules('kode_kotak', 'Kotak', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+        
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Dokuments';
             $data['tbl_user'] = $this->Model_user->getAdmin();
@@ -108,7 +120,7 @@ class Dokuments extends CI_Controller
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
-            $this->load->view('dokuments/editimage', $data);
+            $this->load->view('dokuments/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
             $this->Model_dokuments->editDokuments($id);
@@ -117,7 +129,27 @@ class Dokuments extends CI_Controller
         }
     }
 
-    public function deleteimage($id)
+    public function detail($id)
+    {
+        is_logged_in();
+
+        $data['tbl_user'] = $this->Model_user->getAdmin();
+        $data['title'] = 'Detail Dokuments';
+        $this->load->model('Kelompok_model', 'kelompok');
+        $data['tbl_kelompok'] = $this->kelompok->getkdKelompok();
+        $this->load->model('Lemari_model', 'lemari');
+        $data['tbl_lemari'] = $this->lemari->getkdLemari();
+        $this->load->model('Kotak_model', 'kotak');
+        $data['tbl_Kotak'] = $this->kotak->getkdKotak();
+        $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsId($id);
+        $this->load->view('templates/admin/header', $data);
+        $this->load->view('templates/admin/sidebar', $data);
+        $this->load->view('templates/admin/topbar', $data);
+        $this->load->view('dokuments/detail', $data);
+        $this->load->view('templates/admin/footer');
+    }
+
+    public function delete($id)
     {
         $this->Model_dokuments->deleteDokuments($id);
         $this->session->set_flashdata('flash', 'dihapus');
