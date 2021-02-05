@@ -11,6 +11,16 @@ class Kelompok_model extends CI_Model
                 ";
         return $this->db->query($query)->result_array();
     }
+    
+    public function getkdKelompokId($id)
+    {
+        $query = "SELECT `tbl_dokuments`.*, `tbl_kelompok`.`kelompok`
+                  FROM `tbl_dokuments` JOIN `tbl_kelompok`
+                  ON `tbl_dokuments`.`kelompok_id` = `tbl_kelompok`.`kelompok_id`
+                  WHERE `tbl_dokuments`.`id` = $id
+                ";
+        return $this->db->query($query)->row_array();
+    }
 
     public function getKelompokId($id)
     {

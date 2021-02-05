@@ -67,7 +67,7 @@
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="tempat_lahir">
                         Tanggal Surat
                     </label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                         <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= $tbl_dokuments['tgl_surat']; ?>">
                     </div>
                     <?= form_error('tgl_surat', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
@@ -102,7 +102,7 @@
                         Deskripsi
                     </label>
                     <div class="col-sm-7">
-                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm" value="<?= $tbl_dokuments['deskripsi']; ?>"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm"><?= $tbl_dokuments['deskripsi']; ?></textarea>
                     </div>
                     <?= form_error('deskripsi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
@@ -117,8 +117,8 @@
                         </label>
                         <div class="col-sm-7">
                             <div class="custom-file col-form-label col-form-label-sm">
-                                <input type="file" class="custom-file-input" id="image" name="image">
-                                <label class="custom-file-label" for="image">Choose file</label>
+                                <input type="file" class="custom-file-input" id="<?= $tbl_dokuments['image']; ?>" name="<?= $tbl_dokuments['image']; ?>">
+                                <label class="custom-file-label" for="<?= $tbl_dokuments['image']; ?>"><?= $tbl_dokuments['image']; ?></label>
                             </div>
                         </div>
                         </div>
@@ -129,7 +129,7 @@
 
                         <div class="row justify-content-end">
                             <div class="col-sm-3">
-                                <button type="submit" name="add" class="btn btn-primary btn-block">Tambah</button>
+                                <button type="submit" name="edit" class="btn btn-primary btn-block">Edit</button>
                             </div>
                         </div>
                 </form>

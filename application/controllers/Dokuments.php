@@ -136,11 +136,11 @@ class Dokuments extends CI_Controller
         $data['tbl_user'] = $this->Model_user->getAdmin();
         $data['title'] = 'Detail Dokuments';
         $this->load->model('Kelompok_model', 'kelompok');
-        $data['tbl_kelompok'] = $this->kelompok->getkdKelompok();
+        $data['kdKelompokId'] = $this->kelompok->getkdKelompokId($id);
         $this->load->model('Lemari_model', 'lemari');
-        $data['tbl_lemari'] = $this->lemari->getkdLemari();
+        $data['kdLemariId'] = $this->lemari->getkdLemariId($id);
         $this->load->model('Kotak_model', 'kotak');
-        $data['tbl_Kotak'] = $this->kotak->getkdKotak();
+        $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
         $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsId($id);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);

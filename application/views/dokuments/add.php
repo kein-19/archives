@@ -67,7 +67,7 @@
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="tempat_lahir">
                         Tanggal Surat
                     </label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-5">
                         <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= set_value('tgl_surat'); ?>">
                     </div>
                     <?= form_error('tgl_surat', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
@@ -129,7 +129,7 @@
 
                         <div class="row justify-content-end">
                             <div class="col-sm-3">
-                                <button type="submit" name="add" class="btn btn-primary btn-block">Tambah</button>
+                                <button type="submit" name="add" class="btn btn-primary btn-block">Add</button>
                             </div>
                         </div>
                 </form>

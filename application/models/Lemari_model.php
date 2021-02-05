@@ -10,6 +10,16 @@ class Lemari_model extends CI_Model
                   ON `tbl_kotak`.`kode_lemari` = `tbl_lemari`.`kode_lemari`
                 ";
         return $this->db->query($query)->result_array();
+    } 
+    
+    public function getkdLemariId($id)
+    {
+        $query = "SELECT `tbl_dokuments`.*, `tbl_lemari`.`lemari`
+                  FROM `tbl_dokuments` JOIN `tbl_lemari`
+                  ON `tbl_dokuments`.`kode_lemari` = `tbl_lemari`.`kode_lemari`
+                  WHERE `tbl_dokuments`.`id` = $id
+                ";
+        return $this->db->query($query)->row_array();
     }
     
     public function getLemariId($id_lemari)
