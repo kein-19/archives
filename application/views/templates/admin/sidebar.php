@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-user-tie"></i>
+            <i class="fas fa-archive"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">ADMIN</div>
+        <div class="sidebar-brand-text mx-3">ARCHIVES</div>
     </a>
 
     <!-- Divider -->
@@ -19,7 +19,7 @@
                             FROM `t_user_menu` JOIN `t_user_access_menu`
                               ON `t_user_menu`.`id` = `t_user_access_menu`.`menu_id`
                            WHERE `t_user_access_menu`.`role_id` = $role_id
-                           AND   `t_user_menu`.`id` != 2
+                        --    AND   `t_user_menu`.`id` != 2
                         ORDER BY `t_user_access_menu`.`menu_id` ASC
                         ";
     $menu = $this->db->query($queryMenu)->result_array();

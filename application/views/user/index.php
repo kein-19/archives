@@ -1,29 +1,51 @@
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-
-    <div class="row">
-        <div class="col-lg-8">
-            <?= $this->session->flashdata('message'); ?>
+            <div class="row">
+                <div class="col-10 align-self-lg-center">
+                    <div class="row">
+                        <div class="col-9 align-self-sm-center">
+                                <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <?= $this->session->flashdata('message'); ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-5 ">Nama</label>
+                                <label class="col-sm-7 "><?= $tbl_user['nama_lengkap']; ?></label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-5 ">Email</label>
+                                <label class="col-sm-7 "><?= $tbl_user['email']; ?></label>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-5 ">Role</label>
+                                <?php if ($tbl_user['role_id'] == 1) : ?>
+                                <label class="col-sm-7 ">Administrator</label>
+                                <?php elseif ($tbl_user['role_id'] == 2) : ?>
+                                <label class="col-sm-7 ">Pegawai</label>
+                                <?php elseif ($tbl_user['role_id'] == 3) : ?>
+                                <label class="col-sm-7 ">Badan Kepegawaian Daerah</label>
+                                <?php endif; ?>
+                            </div>
+                            
+                        </div>
+                        <div class="col-3">
+                            <img src="<?= base_url('assets/img/profile/') . $tbl_user['foto']; ?>" class=" img-thumbnail ml-md-5" style="width: 150px">
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-3 mt-2">
+                        <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $tbl_user['date_created']); ?></small></p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end mt-3">
+                    <div class="col-sm-3">
+                    <a href="<?= base_url('user/edit/'); ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
+                    </div>
+                    </div>
         </div>
-    </div>
-
-    <div class="card mb-3 col-lg-8">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $user['name']; ?></h5>
-                    <p class="card-text"><?= $user['email']; ?></p>
-                    <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']); ?></small></p>
-                </div>
-            </div>
         </div>
-    </div>
 
 </div>
 <!-- /.container-fluid -->

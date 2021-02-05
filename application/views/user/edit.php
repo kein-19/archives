@@ -10,38 +10,68 @@
 
             <?= form_open_multipart('user/edit'); ?>
             <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
+                <label class="col-sm-5 col-form-label col-form-label" for="email">
+                    Email
+                </label>
+                <div class="col-sm-7">
+                    <input type="text" name="email" placeholder="Email" id="email" class="form-control form-control-sm" value="<?= $tbl_user['email']; ?>" readonly>
                 </div>
+                <!-- <?= form_error('email', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?> -->
             </div>
             <div class="form-group row">
-                <label for="name" class="col-sm-2 col-form-label">Full name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
-                    <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+                <label class="col-sm-5 col-form-label col-form-label" for="nama_lengkap">
+                    Nama Lengkap
+                </label>
+                <div class="col-sm-7">
+                    <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" id="nama_lengkap" class="form-control form-control-sm" value="<?= $tbl_user['nama_lengkap']; ?>">
                 </div>
+                <?= form_error('nama_lengkap', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
             </div>
             <div class="form-group row">
-                <div class="col-sm-2">Picture</div>
-                <div class="col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="img-thumbnail">
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="image" name="image">
-                                <label class="custom-file-label" for="image">Choose file</label>
-                            </div>
-                        </div>
+                    <label class="col-sm-5 col-form-label col-form-label" for="role_id">
+                        Role
+                    </label>
+                    <div class="col-sm-5">
+                        <?php
+                        $role_id = array(
+                            null => '- Silahkan Pilih -',
+                            1 => 'Administrator',
+                            2 => 'Pegawai',
+                            3 => 'Badan Kepegawaian Daerah'
+                        );
+                        $pilih = $tbl_user['role_id'];
+                        echo form_dropdown(
+                            'role_id',
+                            $role_id,
+                            $pilih,
+                            "class='form-control form-control-sm'"
+                        );
+                        ?>
                     </div>
+                    <?= form_error('role_id', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?php if ($tbl_user['role_id'] == 1) : ?>
+                    <i class="col-form-label col-form-label"></i>
+                    <?php elseif ($tbl_user['role_id'] == 2) : ?>
+                    <i class="col-form-label col-form-label"></i>
+                    <?php elseif ($tbl_user['role_id'] == 3) : ?>
+                    <i class="col-form-label col-form-label"></i>
+                    <?php endif; ?>
+                </div>
+            <div class="form-group row">
+            <label class="col-sm-5 col-form-label col-form-label" for="foto">
+                    Foto
+            </label>
+            <div class="col-sm-7">
+                <img src="<?= base_url('assets/img/profile/') . $tbl_user['foto'] ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                <div class="custom-file col-form-label col-form-label-sm">
+                    <input type="file" class="custom-file-input" id="foto" name="foto">
+                    <label class="custom-file-label" for="foto"><?= $tbl_user['foto']; ?></label>
                 </div>
             </div>
-
-            <div class="form-group row justify-content-end">
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-4">
+                    <button type="submit" name="edit" class="btn btn-primary btn-block">Edit</button>
                 </div>
             </div>
 

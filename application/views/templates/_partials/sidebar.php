@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('siswa_baru'); ?>">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-user-alt"></i>
+            <i class="fas fa-archive"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SISWA</div>
+        <div class="sidebar-brand-text mx-3">ARCHIVES</div>
     </a>
 
     <!-- Divider -->
@@ -66,7 +66,7 @@
     <?php endforeach; ?>
 
     <li class="nav-item mt-3">
-        <a class="nav-link" href="<?= base_url('dokuments/logout'); ?>">
+        <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
             <i class="fas fa-fw fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>
