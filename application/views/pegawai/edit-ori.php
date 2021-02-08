@@ -10,22 +10,28 @@
         </div>
         <div class="card-body ml-md-4">
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <?= form_open_multipart(''); ?>
+            <form class="user" method="post" action="">
+                <h3 class="h5 text-gray-900 mt-sm-4 mb-sm-3">Form Tambah Arsip</h3>
 
-                    <!-- Image -->
-                    <div class="col-lg-7">
+                <!-- <div class="form-group row">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
+                        Nomor
+                    </label>
+                    <div class="col-sm-7">
+                        <input type="text" name="nomor" placeholder="Masukkan Nomor" id="nomor" class="form-control form-control-sm" value="<?= $tbl_dokuments['nomor']; ?>">
+                    </div>
+                    <?= form_error('nomor', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                </div> -->
 
-                        <div class="form-group row">
-                            <label class="col-sm-5 col-form-label col-form-label-sm" for="title">
-                                Title
-                            </label>
-                            <div class="col-sm-7">
-                                <input type="text" name="title" placeholder="Title" id="title" class="form-control form-control-sm" value="<?= set_value('title'); ?>">
-                            </div>
-                            <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                        </div>
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nomor">
+                        Title
+                    </label>
+                    <div class="col-sm-7">
+                        <input type="text" name="title" placeholder="Masukkan Title" id="title" class="form-control form-control-sm" value="<?= $tbl_dokuments['title']; ?>">
+                    </div>
+                    <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
+                </div>
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="jenis">
@@ -35,10 +41,10 @@
                         <?php
                         $jenis = array(
                             null => '- Silahkan Pilih -',
-                            'Masuk' => 'Masuk',
+                            'Masuk'  => 'Masuk',
                             'Keluar' => 'Keluar'
                         );
-                        $pilih = array(null);
+                        $pilih = $tbl_dokuments['jenis'];
                         echo form_dropdown(
                             'jenis',
                             $jenis,
@@ -46,10 +52,12 @@
                             "class='form-control form-control-sm'"
                         );
                         ?>
+                        
                     </div>
                     <?= form_error('jenis', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
-
+                
+                <!-- tambahan dari yang ada -->
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="warganegara">
@@ -57,24 +65,24 @@
                     </label>
                     <div class="col-sm-5">
                         <?php
-                        echo cmb_dinamis('kelompok_id', 'tbl_kelompok', 'kelompok', 'kelompok_id');
+                        echo cmb_dinamis('kelompok', 'tbl_kelompok', 'kelompok', 'kelompok_id');
                         ?>
                     </div>
-                    <?= form_error('kelompok_id', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?= form_error('kelompok', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="tempat_lahir">
                         Tanggal Surat
                     </label>
-                    <div class="col-sm-5">
-                        <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= set_value('tgl_surat'); ?>">
+                    <div class="col-sm-3">
+                        <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= $tbl_dokuments['tgl_surat']; ?>">
                     </div>
                     <?= form_error('tgl_surat', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="lemari">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
                         Lemari
                     </label>
                     <div class="col-sm-5">
@@ -86,7 +94,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="kotak">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
                         Kotak
                     </label>
                     <div class="col-sm-5">
@@ -94,7 +102,7 @@
                         echo cmb_dinamis('kode_kotak', 'tbl_kotak', 'kotak', 'kode_kotak');
                         ?>
                     </div>
-                    <?= form_error('kode_kotak', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?= form_error('statussiswa', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                 </div>
 
                 <div class="form-group row">
@@ -102,40 +110,39 @@
                         Deskripsi
                     </label>
                     <div class="col-sm-7">
-                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm" value="<?= set_value('deskripsi'); ?>"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm" value="<?= $tbl_dokuments['deskripsi']; ?>"></textarea>
                     </div>
                     <?= form_error('deskripsi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                 </div>
-                
-
-                        <!-- <div class="card float-md-right p-md-2">
-                                <img src="<?= base_url('assets/img/profile/') . $tbl_dokuments['image']; ?>" class="card-img rounded mx-auto d-block" style="width: 100px">
-                            </div> -->
-                        <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="image">
+                <div class="form-group row">
+                        <label class="col-sm-5 col-form-label col-form-label-sm" for="deskripsi">
                             Upload File Arsip
                         </label>
                         <div class="col-sm-7">
-                            <div class="custom-file col-form-label col-form-label-sm">
-                                <input type="file" class="custom-file-input" id="image" name="image">
-                                <label class="custom-file-label" for="image">Choose file</label>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="form-group row">
-
+                                <div class="custom-file col-form-label col-form-label-sm">
+                                    <input type="file" class="custom-file-input" id="arsip" name="arsip">
+                                    <label class="custom-file-label" for="arsip">Choose file</label>
+                                </div>
                         </div>
                 </div>
-
-                        <div class="row justify-content-end">
-                            <div class="col-sm-3">
-                                <button type="submit" name="add" class="btn btn-primary btn-block">Add</button>
-                            </div>
+                    
+                    <div class="form-group row justify-content-end">
+                        <div class="col-sm-2">
+                            <button type="submit" name="edit" class="btn btn-primary btn-block">Simpan</button>
                         </div>
-                </form>
+                    </div>
+
+
+                    </form>
+
+
+                </div>
             </div>
         </div>
+
+
     </div>
+    <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
