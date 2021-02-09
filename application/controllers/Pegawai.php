@@ -43,9 +43,11 @@ class Pegawai extends CI_Controller
         // initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
-        $this->load->model('Kelompok_model', 'kelompok');
-        $data['kdKelompok'] = $this->kelompok->getkdKelompok();
-        $data['tbl_user'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
+        $this->load->model('Model_pegawai', 'jabatan');
+        $this->load->model('Model_pegawai', 'divisi');
+        $data['kdJabatan'] = $this->jabatan->getkdJabatan();
+        $data['kdDivisi']  = $this->divisi->getkdDivisi();
+        // $data['tbl_user'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -98,7 +100,7 @@ class Pegawai extends CI_Controller
                 $kode = 1;
             }
 
-            $thn = substr(date('Y'), 2, 2) . substr(date('M'), 2, 2);
+            $thn = substr(date('Y'), 2, 2) . substr(date('m'), 2, 2);
             $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT);
             $fixkode = $thn . $kodemax;
             $this->Model_pegawai->addPegawai($fixkode);

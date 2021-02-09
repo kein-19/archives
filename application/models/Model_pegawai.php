@@ -20,11 +20,9 @@ class Model_pegawai extends CI_Model
     {
         // untuk pencarian
         if ($keyword) {
-            $this->db->like('id', $keyword);
-            $this->db->or_like('nomor', $keyword);
+            $this->db->like('nik', $keyword);
             $this->db->or_like('nama_lengkap', $keyword);
-            $this->db->or_like('deskripsi', $keyword);
-            $this->db->or_like('name_file', $keyword);
+            $this->db->or_like('divisi', $keyword);
         }
 
         return $this->db->get('tbl_user', $limit, $start)->result_array();
@@ -67,39 +65,6 @@ class Model_pegawai extends CI_Model
                 ";
         return $this->db->query($query)->row_array();
     }
-
-    // public function getPegawai()
-    // {
-    //     return $this->db->get('tbl_user')->row();
-    // }
-
-    // public function getAllPegawai()
-    // {
-    //     return $this->db->get('tbl_user')->result_array();
-    // }
-
-    // public function getPegawaiId($id)
-    // {
-    //     return $this->db->get_where('tbl_user', ['id' => $id])->row_array();
-    // }
-
-
-    // // fitur untuk pagination
-    // public function getPegawaiLimit($limit, $start, $keyword = null)
-    // // public function getPegawaiLimit($limit, $start)
-    // {
-    //     // untuk pencarian
-    //     if ($keyword) {
-    //         $this->db->like('nama_lengkap', $keyword);
-    //     }
-
-    //     return $this->db->get('tbl_user', $limit, $start)->result_array();
-    // }
-
-    // public function countAllPegawai()
-    // {
-    //     return $this->db->get('tbl_user')->num_rows();
-    // }
 
     public function addPegawai($fixkode)
     // public function addPegawai()
@@ -164,11 +129,11 @@ class Model_pegawai extends CI_Model
         $this->db->update('tbl_user', $data);
     }
 
-    public function deletePegawai($id)
+    public function deletePegawai($id_user)
     {
         $this->db->delete(
             'tbl_user',
-            ['id' => $id]
+            ['id_user' => $id_user]
         );
     }
 }

@@ -59,7 +59,7 @@
             <script src="<?= base_url(); ?>assets/js/kotak.js"></script>
             <script src="<?= base_url(); ?>assets/js/role.js"></script>
             <script src="<?= base_url(); ?>assets/js/sekolah.js"></script>
-            <script src="<?= base_url(); ?>assets/js/gallery.js"></script>
+            <script src="<?= base_url(); ?>assets/js/pegawai.js"></script>
 
             <script>
                 $('.custom-file-input').on('change', function() {

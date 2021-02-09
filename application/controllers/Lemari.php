@@ -13,7 +13,7 @@ class Lemari extends CI_Controller
     public function index()
     {
         $data['title'] = 'Lemari Management';
-        $data['lemari'] = $thisr->db->get('tbl_lemari')->result_array();
+        $data['lemari'] = $this->db->get('tbl_lemari')->result_array();
         $this->form_validation->set_rules('lemari', 'Lemari', 'required');
         $this->form_validation->set_rules('lokasi', 'Lokasi', 'required');
         $this->form_validation->set_rules('ruangan', 'Ruangan', 'required');
