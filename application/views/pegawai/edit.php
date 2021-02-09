@@ -13,129 +13,99 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?= form_open_multipart(''); ?>
-
-                    <!-- Image -->
-                    <div class="col-lg-7">
-
-                        <div class="form-group row">
-                            <label class="col-sm-5 col-form-label col-form-label-sm" for="title">
-                                Title
-                            </label>
-                            <div class="col-sm-7">
-                                <input type="text" name="title" placeholder="Title" id="title" class="form-control form-control-sm" value="<?= $tbl_dokuments['title']; ?>">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_lengkap">
+                                    Nama Lengkap
+                                </label>
+                                <div class="col-sm-7">
+                                <input type="text" class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?= $tbl_user['nama_lengkap']; ?>">
+                                <?= form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
                             </div>
-                            <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                        </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="jenis">
-                        Jenis
-                    </label>
-                    <div class="col-sm-5">
-                        <?php
-                        $jenis = array(
-                            null => '- Silahkan Pilih -',
-                            'Masuk' => 'Masuk',
-                            'Keluar' => 'Keluar'
-                        );
-                        $pilih = array(null);
-                        echo form_dropdown(
-                            'jenis',
-                            $jenis,
-                            $pilih,
-                            "class='form-control form-control-sm'"
-                        );
-                        ?>
-                    </div>
-                    <?= form_error('jenis', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                </div>
-
-
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="warganegara">
-                        Kelompok
-                    </label>
-                    <div class="col-sm-5">
-                        <?php
-                        echo cmb_dinamis('kelompok_id', 'tbl_kelompok', 'kelompok', 'kelompok_id');
-                        ?>
-                    </div>
-                    <?= form_error('kelompok_id', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="tempat_lahir">
-                        Tanggal Surat
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="date" name="tgl_surat" placeholder="Tanggal Surat" id="tgl_surat" class="form-control form-control-sm" value="<?= $tbl_dokuments['tgl_surat']; ?>">
-                    </div>
-                    <?= form_error('tgl_surat', '<small class="text-danger pl-3 col-sm-3 align-items-sm-end">', '</small>'); ?>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
-                        Lemari
-                    </label>
-                    <div class="col-sm-5">
-                        <?php
-                        echo cmb_dinamis('kode_lemari', 'tbl_lemari', 'lemari', 'kode_lemari');
-                        ?>
-                    </div>
-                    <?= form_error('kode_lemari', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="statussiswa">
-                        Kotak
-                    </label>
-                    <div class="col-sm-5">
-                        <?php
-                        echo cmb_dinamis('kode_kotak', 'tbl_kotak', 'kotak', 'kode_kotak');
-                        ?>
-                    </div>
-                    <?= form_error('kode_kotak', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="deskripsi">
-                        Deskripsi
-                    </label>
-                    <div class="col-sm-7">
-                        <textarea name="deskripsi" id="deskripsi" class="form-control form-control-sm"><?= $tbl_dokuments['deskripsi']; ?></textarea>
-                    </div>
-                    <?= form_error('deskripsi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
-                </div>
-                
-
-                        <!-- <div class="card float-md-right p-md-2">
-                                <img src="<?= base_url('assets/img/profile/') . $tbl_dokuments['image']; ?>" class="card-img rounded mx-auto d-block" style="width: 100px">
-                            </div> -->
-                        <div class="form-group row">
-                        <label class="col-sm-5 col-form-label col-form-label-sm" for="image">
-                            Upload File Arsip
-                        </label>
-                        <div class="col-sm-7">
-                            <div class="custom-file col-form-label col-form-label-sm">
-                                <input type="file" class="custom-file-input" id="<?= $tbl_dokuments['image']; ?>" name="<?= $tbl_dokuments['image']; ?>">
-                                <label class="custom-file-label" for="<?= $tbl_dokuments['image']; ?>"><?= $tbl_dokuments['image']; ?></label>
+    
+                            <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label col-form-label-sm" for="jabatan">
+                                        Jabatan
+                                    </label>
+                                    <div class="col-sm-5">
+                                        <?php
+                                        echo cmb_dinamis('kode_jabatan', 'tbl_jabatan', 'jabatan', 'kode_jabatan');
+                                        ?>
+                                    </div>
+                                    <?= form_error('kode_jabatan', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
-                        </div>
-                        </div>
-                        <div class="form-group row">
-
-                        </div>
-                </div>
-
-                        <div class="row justify-content-end">
-                            <div class="col-sm-3">
-                                <button type="submit" name="edit" class="btn btn-primary btn-block">Edit</button>
+                            
+                            <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label col-form-label-sm" for="divisi">
+                                        Divisi
+                                    </label>
+                                    <div class="col-sm-5">
+                                        <?php
+                                        echo cmb_dinamis('kode_divisi', 'tbl_divisi', 'divisi', 'kode_divisi');
+                                        ?>
+                                    </div>
+                                    <?= form_error('kode_divisi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
                             </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="role_id">
+                                    Role
+                                </label>
+                                <div class="col-sm-5">
+                                    <?php
+                                    $role_id = array(
+                                        null => '- Silahkan Pilih -',
+                                        1 => 'Administrator',
+                                        2 => 'Pegawai',
+                                        3 => 'Badan Kepegawaian Daerah'
+                                    );
+                                    $pilih = $tbl_user['role_id'];;
+                                    echo form_dropdown(
+                                        'role_id',
+                                        $role_id,
+                                        $pilih,
+                                        "class='form-control form-control-sm'"
+                                    );
+                                    ?>
+                                </div>
+                                <?= form_error('role_id', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label col-form-label-sm" for="email">
+                                    Email
+                                </label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?= $tbl_user['email']; ?>">
+                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
+                                    <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
+                                </div>
+                            </div>
+                            
+                            <div class="row justify-content-end">
+                                <div class="col-lg-5">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        Edit
+                                    </button>
+                                    <!-- <button type="submit" name="add" class="btn btn-primary btn-block">Add</button> -->
+                                </div>
+                            </div>                    
+
+                            </form>
                         </div>
-                </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 <!-- End of Main Content -->

@@ -61,11 +61,10 @@ class Pegawai extends CI_Controller
         is_logged_in();
         
         // $this->form_validation->set_rules('nik', 'Nomor', 'required|trim');
-        $this->form_validation->set_rules('nama_lengkap', 'Title', 'required|trim');
-        $this->form_validation->set_rules('kode_jabatan', 'Jenis', 'required');
-        $this->form_validation->set_rules('kode_divisi', 'Kelompok', 'required');
-        $this->form_validation->set_rules('role_id', 'Tanggal Surat', 'required');
-        $this->form_validation->set_rules('email', 'Lemari', 'required');
+        $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
+        $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
+        $this->form_validation->set_rules('kode_divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_user.email]', [
             'is_unique' => 'Email sudah terdaftar!'
@@ -109,28 +108,34 @@ class Pegawai extends CI_Controller
         }
     }
 
-    public function edit($id)
+    public function edit($id_user)
     {
         is_logged_in();
-        $this->form_validation->set_rules('nama_lengkap', 'Title', 'required|trim');
-        $this->form_validation->set_rules('kode_jabatan', 'Jenis', 'required');
-        $this->form_validation->set_rules('kode_divisi', 'Kelompok', 'required');
-        $this->form_validation->set_rules('role_id', 'Tanggal Surat', 'required');
-        $this->form_validation->set_rules('email', 'Lemari', 'required');
-        $this->form_validation->set_rules('kode_kotak', 'Kotak', 'required');
-        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+        $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
+        $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
+        $this->form_validation->set_rules('kode_divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
+
+        // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_user.email]', [
+        //     'is_unique' => 'Email sudah terdaftar!'
+        // ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'Password tidak sesuai!',
+            'min_length' => 'Password terlalu pendek!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
         
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Pegawai';
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['tbl_user'] = $this->Model_pegawai->getPegawaiId($id);
+            $data['tbl_user'] = $this->Model_pegawai->getPegawaiId($id_user);
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
             $this->load->view('pegawai/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_pegawai->editPegawai($id);
+            $this->Model_pegawai->editPegawai($id_user);
             $this->session->set_flashdata('flash', 'diupdate');
             redirect('pegawai');
         }

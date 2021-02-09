@@ -11,7 +11,7 @@ if (flashPegawai) {
 else if (flashPegawai) {
 	Swal.fire({
 		title: 'Pegawai',
-		text: 'Harus ' + flashPegawai,,
+		text: 'Harus ' + flashPegawai,
 		icon: 'warning'
 	});
 }

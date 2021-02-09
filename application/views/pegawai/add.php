@@ -20,7 +20,7 @@
                                     Nama Lengkap
                                 </label>
                                 <div class="col-sm-7">
-                                <input type="text" class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?= set_value('name'); ?>">
+                                <input type="text" class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?= set_value('nama_lengkap'); ?>">
                                 <?= form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>

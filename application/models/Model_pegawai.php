@@ -33,9 +33,9 @@ class Model_pegawai extends CI_Model
         return $this->db->get('tbl_user')->num_rows();
     }
 
-    public function getPegawaiId($id)
+    public function getPegawaiId($id_user)
     {
-        return $this->db->get_where('tbl_user', ['id' => $id])->row_array();
+        return $this->db->get_where('tbl_user', ['id_user' => $id_user])->row_array();
     }
 
     public function getkdJabatan()
@@ -89,19 +89,25 @@ class Model_pegawai extends CI_Model
             $this->db->insert('tbl_user', $data);
     }
 
-    public function editPegawai($id)
+    public function editPegawai($id_user)
     {
 
+        $email = $this->input->post('email', true);
         $data = [
-            // 'nomor'                 => ($fixkode),
-            'nama_lengkap'                 => htmlspecialchars($this->input->post('nama_lengkap', TRUE)),
-            'kode_jabatan'                 => $this->input->post('kode_jabatan', TRUE),
-            'kode_divisi'           => $this->input->post('kode_divisi', TRUE),
-            'tgl_surat'             => htmlspecialchars($this->input->post('tgl_surat', TRUE)),
+            'nama_lengkap'      => htmlspecialchars($this->input->post('nama_lengkap', true)),
+            'email'             => htmlspecialchars($email),
+            // 'nik'               => ($fixkode),
+            'kode_jabatan'      => $this->input->post('kode_jabatan', TRUE),
+            'kode_divisi'       => $this->input->post('kode_divisi', TRUE),
             'role_id'           => $this->input->post('role_id', TRUE),
-            'kode_jabatan'            => $this->input->post('kode_jabatan', TRUE),
-            'deskripsi'             => htmlspecialchars($this->input->post('deskripsi', TRUE))
+            'kode_jabatan'      => $this->input->post('kode_jabatan', TRUE),
+            // 'foto'              => 'default.png',
+            'password'          => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            // 'role_id' => 1,
+            // 'is_active'         => 1,
+            // 'date_created'      => time()
         ];
+        
         // cek jika ada gambar yang akan diupload
         $upload_image = $_FILES['image']['name'];
 
@@ -125,7 +131,7 @@ class Model_pegawai extends CI_Model
             }
         }
 
-        $this->db->where('id', $id);
+        $this->db->where('id_user', $id_user);
         $this->db->update('tbl_user', $data);
     }
 
