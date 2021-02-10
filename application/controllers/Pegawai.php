@@ -141,19 +141,19 @@ class Pegawai extends CI_Controller
         }
     }
 
-    public function detail($id)
+    public function detail($id_user)
     {
         is_logged_in();
 
         $data['tbl_user'] = $this->Model_user->getAdmin();
         $data['title'] = 'Detail Pegawai';
-        $this->load->model('Kelompok_model', 'kelompok');
-        $data['kdKelompokId'] = $this->kelompok->getkdKelompokId($id);
-        $this->load->model('Lemari_model', 'lemari');
-        $data['kdLemariId'] = $this->lemari->getkdLemariId($id);
-        $this->load->model('Kotak_model', 'kotak');
-        $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
-        $data['tbl_user'] = $this->Model_pegawai->getPegawaiId($id);
+        $this->load->model('Model_pegawai', 'jabatan');
+        $data['kdJabatanId'] = $this->jabatan->getkdJabatanId($id_user);
+        $this->load->model('Model_pegawai', 'divisi');
+        $data['kdDivisiId'] = $this->divisi->getkdDivisiId($id_user);
+        // $this->load->model('Kotak_model', 'kotak');
+        // $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
+        $data['tbl_user'] = $this->Model_pegawai->getPegawaiId($id_user);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);

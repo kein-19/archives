@@ -17,65 +17,65 @@
                     <!-- Image -->
                     <div class="col-lg-7">
                         <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Nomor</p>
-                            <p class="card-text col-sm-7"><?= $tbl_dokuments['nomor']; ?></p>
+                            <p class="card-text col-sm-5">NIK</p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['nik']; ?></p>
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Title</p>
-                            <p class="card-text col-sm-7"><?= $tbl_dokuments['title']; ?></p>
+                            <p class="card-text col-sm-5">Nama Lengkap</p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['nama_lengkap']; ?></p>
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Jenis</p>
-                            <p class="card-text col-sm-7"><?= $tbl_dokuments['jenis']; ?></p>
+                            <p class="card-text col-sm-5">Jabatan</p>
+                            <p class="card-text col-sm-7"><?= $kdJabatanId['jabatan']; ?></p>
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Kelompok</p>
-                            <p class="card-text col-sm-7"><?= $kdKelompokId['kelompok']; ?></p>
+                            <p class="card-text col-sm-5">Divisi</p>
+                            <p class="card-text col-sm-7"><?= $kdDivisiId['divisi']; ?></p>
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Tanggal Surat</p>
-                            <p class="card-text col-sm-7"><?= $tbl_dokuments['tgl_surat']; ?></p>
+                            <p class="card-text col-sm-5">Role</p>
+                            <?php if ($tbl_user['role_id'] == 1) : ?>
+                            <p class="card-text col-sm-7 ">Administrator</p>
+                            <?php elseif ($tbl_user['role_id'] == 2) : ?>
+                            <p class="card-text col-sm-7 ">Pegawai</p>
+                            <?php elseif ($tbl_user['role_id'] == 3) : ?>
+                            <p class="card-text col-sm-7 ">Badan Kepegawaian Daerah</p>
+                            <?php endif; ?>
+                            <!-- <p class="card-text col-sm-7"><?= $tbl_user['role_id']; ?></p> -->
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Lemari</p>
-                            <p class="card-text col-sm-7"><?= $kdLemariId['lemari']; ?></p>
-                        </div>
-                        <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Kotak</p>
-                            <p class="card-text col-sm-7"><?= $kdKotakId['kotak']; ?></p>
-                        </div>
-                        <div class="form-group row">
-                            <p class="card-text col-sm-5" for="title">Deskripsi</p>
-                            <p class="card-text col-sm-7"><?= $tbl_dokuments['deskripsi']; ?></p>
+                            <p class="card-text col-sm-5">Email</p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['email']; ?></p>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                         <p class="card-text col-sm-5" for="image">
                             File Arsip
                         </p>
-                            <p class="card-text col-sm-7"><?= $tbl_dokuments['image']; ?></p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['image']; ?></p> -->
                             <!-- <div class="custom-file col-form-label col-form-label-sm">
                                 <p class="card-text col-sm-7" input type="file" class="custom-file-input" id="image" name="image">
                                 <p class="custom-file-label" for="image">Choose file</p>
                             </div> -->
-                        </div>
-                        </div>
-                        <div class="form-group row">
+                        <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="form-group row">
 
-                        </div>
+                        </div> -->
+                    </div>
                 </div>
 
             </div>
 
             <div class="form-group row justify-content-end mt-sm-5">
                 <div class="col-sm-3">
-                    <a href="<?= base_url('dokuments/edit/') . $tbl_dokuments['id']; ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
+                    <a href="<?= base_url('pegawai/edit/') . $tbl_user['id_user']; ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
                 </div>
+                <!-- <div class="col-sm-3">
+                    <a href="<?= base_url('assets/archives/') . $tbl_user['image']; ?>" class="print btn btn-success btn-block" role="button" target="blank">Download</a>
+                </div> -->
                 <div class="col-sm-3">
-                    <a href="<?= base_url('assets/archives/') . $tbl_dokuments['image']; ?>" class="print btn btn-success btn-block" role="button" target="blank">Download</a>
-                </div>
-                <div class="col-sm-3">
-                    <a href="<?= base_url('dokuments/delete/') . $tbl_dokuments['id']; ?>" class="print btn btn-danger btn-block tombol-hapus" role="button">Delete</a>
+                    <a href="<?= base_url('pegawai/delete/') . $tbl_user['id_user']; ?>" class="print btn btn-danger btn-block tombol-hapus" role="button">Delete</a>
                 </div>
             </div>
         </div>

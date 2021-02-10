@@ -19,6 +19,7 @@ class User extends CI_Controller
         $this->load->library('form_validation');
         // $this->load->library('ssp');
         $this->load->model('Model_user');
+        $this->load->model('Model_pegawai');
         $this->load->model('Model_dokuments');
     }
 
@@ -28,6 +29,10 @@ class User extends CI_Controller
         $data['title'] = 'My Profile';
         $data['tbl_user'] = $this->Model_user->getAdmin();
         $data['tbl_dokuments'] = $this->Model_dokuments->getDokuments();
+        $this->load->model('Model_pegawai', 'jabatan');
+        $data['kdJabatan'] = $this->jabatan->getkdJabatan();
+        $this->load->model('Model_pegawai', 'divisi');
+        $data['kdDivisi'] = $this->divisi->getkdDivisi();
         // $this->load->model('Model_user', 'role');
         // $data['kdRoleId'] = $this->role->getkdRoleId();
         $this->load->view('templates/_partials/header', $data);

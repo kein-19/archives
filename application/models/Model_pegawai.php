@@ -56,12 +56,22 @@ class Model_pegawai extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    public function getkdJabatanId($id)
+    public function getkdJabatanId($id_user)
     {
         $query = "SELECT `tbl_user`.*, `tbl_jabatan`.`jabatan`
                   FROM `tbl_user` JOIN `tbl_jabatan`
                   ON `tbl_user`.`kode_jabatan` = `tbl_jabatan`.`kode_jabatan`
-                  WHERE `tbl_user`.`id` = $id
+                  WHERE `tbl_user`.`id_user` = $id_user
+                ";
+        return $this->db->query($query)->row_array();
+    }
+    
+    public function getkdDivisiId($id_user)
+    {
+        $query = "SELECT `tbl_user`.*, `tbl_divisi`.`divisi`
+                  FROM `tbl_user` JOIN `tbl_divisi`
+                  ON `tbl_user`.`kode_divisi` = `tbl_divisi`.`kode_divisi`
+                  WHERE `tbl_user`.`id_user` = $id_user
                 ";
         return $this->db->query($query)->row_array();
     }

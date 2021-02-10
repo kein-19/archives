@@ -10,7 +10,38 @@
                                     <?= $this->session->flashdata('message'); ?>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group row">
+                            <p class="card-text col-sm-5">NIK</p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['nik']; ?></p>
+                        </div>
+                        <div class="form-group row">
+                            <p class="card-text col-sm-5">Nama Lengkap</p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['nama_lengkap']; ?></p>
+                        </div>
+                        <div class="form-group row">
+                            <p class="card-text col-sm-5">Jabatan</p>
+                            <p class="card-text col-sm-7"><?= $kdJabatan['jabatan']; ?></p>
+                        </div>
+                        <div class="form-group row">
+                            <p class="card-text col-sm-5">Divisi</p>
+                            <p class="card-text col-sm-7"><?= $kdDivisi['divisi']; ?></p>
+                        </div>
+                        <div class="form-group row">
+                            <p class="card-text col-sm-5">Role</p>
+                            <?php if ($tbl_user['role_id'] == 1) : ?>
+                            <p class="card-text col-sm-7 ">Administrator</p>
+                            <?php elseif ($tbl_user['role_id'] == 2) : ?>
+                            <p class="card-text col-sm-7 ">Pegawai</p>
+                            <?php elseif ($tbl_user['role_id'] == 3) : ?>
+                            <p class="card-text col-sm-7 ">Badan Kepegawaian Daerah</p>
+                            <?php endif; ?>
+                            <!-- <p class="card-text col-sm-7"><?= $tbl_user['role_id']; ?></p> -->
+                        </div>
+                        <div class="form-group row">
+                            <p class="card-text col-sm-5">Email</p>
+                            <p class="card-text col-sm-7"><?= $tbl_user['email']; ?></p>
+                        </div>
+                            <!-- <div class="row">
                                 <label class="col-sm-5 ">Nama</label>
                                 <label class="col-sm-7 "><?= $tbl_user['nama_lengkap']; ?></label>
                             </div>
@@ -27,7 +58,7 @@
                                 <?php elseif ($tbl_user['role_id'] == 3) : ?>
                                 <label class="col-sm-7 ">Badan Kepegawaian Daerah</label>
                                 <?php endif; ?>
-                            </div>
+                            </div> -->
                             
                         </div>
                         <div class="col-3">
