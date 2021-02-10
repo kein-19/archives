@@ -16,8 +16,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-x font-weight-bold text-primary text-uppercase mb-1">
-                                TOTAL Dokuments</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_rows; ?></div> -->
+                                TOTAL DOKUMENTS</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_rows; ?></div>
                         </div>
                         <div class="col-auto">
                             <!-- <a href="<?= base_url('dokuments'); ?>"><i class="fas fa-users fa-2x text-gray-300"></i></a> -->
@@ -34,8 +34,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-x font-weight-bold text-success text-uppercase mb-1">
-                                TOTAL SISWA KELAS XI DAN XII</div>
-                            <!-- <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $tbl_siswa; ?></div> -->
+                                TOTAL PEGAWAI</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $total_pegawai; ?></div>
                         </div>
                         <div class="col-auto">
                             <!-- <a href="<?= base_url('siswa'); ?>"><i class="fas fa-user-check fa-2x text-gray-300"></i></a> -->

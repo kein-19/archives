@@ -10,7 +10,7 @@ class Admin extends CI_Controller
 
         $this->load->library('form_validation');
         $this->load->model('Model_user');
-        // $this->load->model('Model_gallery');
+        $this->load->model('Model_pegawai');
         // $this->load->model('Model_sekolah');
     }
 
@@ -19,6 +19,16 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Dashboard';
         $data['tbl_user'] = $this->Model_user->getAdmin();
+        // $data['tbl_user'] = $this->Model_pegawai->countAllPegawai();
+        
+        $this->db->from('tbl_dokuments');
+        $config['total_rows'] = $this->db->count_all_results();
+        $data['total_rows'] = $config['total_rows'];        
+        
+        $this->db->from('tbl_user');
+        $config['total_pegawai'] = $this->db->count_all_results();
+        $data['total_pegawai'] = $config['total_pegawai'];
+
 
         // $data['tbl_images'] = $this->Model_gallery->getImageLimit(6, 0);
         // $data['tbl_profile'] = $this->Model_sekolah->getSekolah();
