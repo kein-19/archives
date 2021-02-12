@@ -28,9 +28,9 @@ class Pegawai extends CI_Controller
             $data['keyword'] = $this->session->userdata('keyword');
         }
         // config
-        $this->db->like('nama_lengkap', $data['keyword']);
+        $this->db->like('nrh', $data['keyword']);
+        $this->db->or_like('nama_lengkap', $data['keyword']);
         $this->db->or_like('email', $data['keyword']);
-        // $this->db->or_like('deskripsi', $data['keyword']);
                 
         $this->db->from('tbl_pegawai');
         $config['total_rows'] = $this->db->count_all_results();
@@ -43,11 +43,8 @@ class Pegawai extends CI_Controller
         // initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
-        $this->load->model('Model_pegawai', 'jabatan');
-        $this->load->model('Model_pegawai', 'status');
-        $data['kdJabatan'] = $this->jabatan->getkdJabatan();
-        $data['kdStatus']  = $this->status->getkdStatus();
-        // $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
+        
+        $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -151,8 +148,6 @@ class Pegawai extends CI_Controller
         $data['kdJabatanId'] = $this->jabatan->getkdJabatanId($id_pegawai);
         $this->load->model('Model_pegawai', 'status');
         $data['kdStatusId'] = $this->status->getkdStatusId($id_pegawai);
-        // $this->load->model('Kotak_model', 'kotak');
-        // $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
         $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiId($id_pegawai);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);

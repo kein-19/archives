@@ -43,7 +43,7 @@
                             <th scope="col" class="align-middle text-center">No</th>
                             <th scope="col" class="align-middle">Nomor Arsip</th>
                             <th scope="col" class="align-middle">Judul</th>
-                            <th scope="col" class="align-middle">Kelompok</th>
+                            <th scope="col" class="align-middle">Jenis</th>
                             <th scope="col" class="align-middle">Tgl Surat</th>
                             <th scope="col" class="align-middle text-center">Action</th>
                         </tr>
@@ -60,13 +60,13 @@
                             </tr>
                         <?php endif; ?>
 
-                        <?php foreach ($kdKelompok as $sb) : ?>
+                        <?php foreach ($tbl_dokuments as $sb) : ?>
 
                             <tr>
                                 <th class="align-middle text-center" scope="row"><?= ++$start; ?></th>
                                 <td class="align-middle"><?= $sb['nomor']; ?></td>
                                 <td class="align-middle"><?= $sb['title']; ?></td>
-                                <td class="align-middle"><?= $sb['kelompok']; ?></td>
+                                <td class="align-middle"><?= $sb['jenis']; ?></td>
                                 <td class="align-middle"><?= $sb['tgl_surat']; ?></td>
                                 
                                 <td class="align-middle text-center">

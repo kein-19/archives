@@ -18,11 +18,11 @@
                     <div class="col-lg-7">
                         <div class="form-group row">
                             <p class="card-text col-sm-5">NIK</p>
-                            <p class="card-text col-sm-7"><?= $tbl_user['nik']; ?></p>
+                            <p class="card-text col-sm-7"><?= $tbl_pegawai['nrh']; ?></p>
                         </div>
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Nama Lengkap</p>
-                            <p class="card-text col-sm-7"><?= $tbl_user['nama_lengkap']; ?></p>
+                            <p class="card-text col-sm-7"><?= $tbl_pegawai['nama_lengkap']; ?></p>
                         </div>
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Jabatan</p>
@@ -34,25 +34,25 @@
                         </div>
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Role</p>
-                            <?php if ($tbl_user['role_id'] == 1) : ?>
+                            <?php if ($tbl_pegawai['role_id'] == 1) : ?>
                             <p class="card-text col-sm-7 ">Administrator</p>
-                            <?php elseif ($tbl_user['role_id'] == 2) : ?>
+                            <?php elseif ($tbl_pegawai['role_id'] == 2) : ?>
                             <p class="card-text col-sm-7 ">Pegawai</p>
-                            <?php elseif ($tbl_user['role_id'] == 3) : ?>
+                            <?php elseif ($tbl_pegawai['role_id'] == 3) : ?>
                             <p class="card-text col-sm-7 ">Badan Kepegawaian Daerah</p>
                             <?php endif; ?>
-                            <!-- <p class="card-text col-sm-7"><?= $tbl_user['role_id']; ?></p> -->
+                            <!-- <p class="card-text col-sm-7"><?= $tbl_pegawai['role_id']; ?></p> -->
                         </div>
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Email</p>
-                            <p class="card-text col-sm-7"><?= $tbl_user['email']; ?></p>
+                            <p class="card-text col-sm-7"><?= $tbl_pegawai['email']; ?></p>
                         </div>
 
                         <!-- <div class="form-group row">
                         <p class="card-text col-sm-5" for="image">
                             File Arsip
                         </p>
-                            <p class="card-text col-sm-7"><?= $tbl_user['image']; ?></p> -->
+                            <p class="card-text col-sm-7"><?= $tbl_pegawai['image']; ?></p> -->
                             <!-- <div class="custom-file col-form-label col-form-label-sm">
                                 <p class="card-text col-sm-7" input type="file" class="custom-file-input" id="image" name="image">
                                 <p class="custom-file-label" for="image">Choose file</p>
@@ -69,13 +69,13 @@
 
             <div class="form-group row justify-content-end mt-sm-5">
                 <div class="col-sm-3">
-                    <a href="<?= base_url('pegawai/edit/') . $tbl_user['id_user']; ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
+                    <a href="<?= base_url('pegawai/edit/') . $tbl_pegawai['id_pegawai']; ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
                 </div>
                 <!-- <div class="col-sm-3">
-                    <a href="<?= base_url('assets/archives/') . $tbl_user['image']; ?>" class="print btn btn-success btn-block" role="button" target="blank">Download</a>
+                    <a href="<?= base_url('assets/archives/') . $tbl_pegawai['image']; ?>" class="print btn btn-success btn-block" role="button" target="blank">Download</a>
                 </div> -->
                 <div class="col-sm-3">
-                    <a href="<?= base_url('pegawai/delete/') . $tbl_user['id_user']; ?>" class="print btn btn-danger btn-block tombol-hapus" role="button">Delete</a>
+                    <a href="<?= base_url('pegawai/delete/') . $tbl_pegawai['id_pegawai']; ?>" class="print btn btn-danger btn-block tombol-hapus" role="button">Delete</a>
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@
                                     Nama Lengkap
                                 </label>
                                 <div class="col-sm-7">
-                                <input type="text" class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?= $tbl_user['nama_lengkap']; ?>">
+                                <input type="text" class="form-control form-control-user" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?= $tbl_pegawai['nama_lengkap']; ?>">
                                 <?= form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                         2 => 'Pegawai',
                                         3 => 'Badan Kepegawaian Daerah'
                                     );
-                                    $pilih = $tbl_user['role_id'];;
+                                    $pilih = $tbl_pegawai['role_id'];;
                                     echo form_dropdown(
                                         'role_id',
                                         $role_id,
@@ -77,7 +77,7 @@
                                     Email
                                 </label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?= $tbl_user['email']; ?>">
+                                    <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email Address" value="<?= $tbl_pegawai['email']; ?>">
                                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@ class Dokuments extends CI_Controller
         // config
         $this->db->like('title', $data['keyword']);
         $this->db->or_like('nomor', $data['keyword']);
-        $this->db->or_like('deskripsi', $data['keyword']);
+        $this->db->or_like('jenis', $data['keyword']);
                 
         $this->db->from('tbl_dokuments');
         $config['total_rows'] = $this->db->count_all_results();
@@ -43,8 +43,8 @@ class Dokuments extends CI_Controller
         // initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
-        $this->load->model('Kelompok_model', 'kelompok');
-        $data['kdKelompok'] = $this->kelompok->getkdKelompok();
+        // $this->load->model('Kelompok_model', 'kelompok');
+        // $data['kdKelompok'] = $this->kelompok->getkdKelompok();
         $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);

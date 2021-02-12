@@ -41,13 +41,13 @@
                             <th scope="col" class="align-middle text-center">No</th>
                             <th scope="col" class="align-middle">NRH</th>
                             <th scope="col" class="align-middle">Nama Lengkap</th>
-                            <th scope="col" class="align-middle">Status</th>
+                            <th scope="col" class="align-middle">Email</th>
                             <th scope="col" class="align-middle text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <?php if (empty($tbl_user)) : ?>
+                        <?php if (empty($tbl_pegawai)) : ?>
                             <tr>
                                 <td colspan="7">
                                     <div class="alert alert-danger" role="alert">
@@ -57,13 +57,13 @@
                             </tr>
                         <?php endif; ?>
 
-                        <?php foreach ($kdStatus as $sb) : ?>
+                        <?php foreach ($tbl_pegawai as $sb) : ?>
 
                             <tr>
                                 <th class="align-middle text-center" scope="row"><?= ++$start; ?></th>
                                 <td class="align-middle"><?= $sb['nrh']; ?></td>
                                 <td class="align-middle"><?= $sb['nama_lengkap']; ?></td>
-                                <td class="align-middle"><?= $sb['status']; ?></td>
+                                <td class="align-middle"><?= $sb['email']; ?></td>
                                 
                                 <td class="align-middle text-center">
                                     <h4><a href="<?= base_url('pegawai/detail/') . $sb['id_pegawai']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>

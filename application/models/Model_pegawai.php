@@ -23,10 +23,10 @@ class Model_pegawai extends CI_Model
         if ($keyword) {
             $this->db->like('nrh', $keyword);
             $this->db->or_like('nama_lengkap', $keyword);
-            $this->db->or_like('status', $keyword);
+            $this->db->or_like('email', $keyword);
         }
-
-        return $this->db->get('tbl_pegawai', 5, $start)->result_array();
+        
+        return $this->db->get('tbl_pegawai', $limit, $start)->result_array();
     }
 
     public function countAllPegawai()
@@ -50,7 +50,7 @@ class Model_pegawai extends CI_Model
     
     public function getkdStatus()
     {
-        $query = "SELECT `tbl_pegawai`.*, `tbl_status`.`status`
+        $query = "SELECT `tbl_pegawai`.`kode_status`, `tbl_status`.`status`
                   FROM `tbl_pegawai` JOIN `tbl_status`
                   ON `tbl_pegawai`.`kode_status` = `tbl_status`.`kode_status`
                 ";

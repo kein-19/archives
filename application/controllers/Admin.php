@@ -25,7 +25,7 @@ class Admin extends CI_Controller
         $config['total_rows'] = $this->db->count_all_results();
         $data['total_rows'] = $config['total_rows'];        
         
-        $this->db->from('tbl_user');
+        $this->db->from('tbl_pegawai');
         $config['total_pegawai'] = $this->db->count_all_results();
         $data['total_pegawai'] = $config['total_pegawai'];
 
