@@ -40,17 +40,17 @@
             </div>
             
             <div class="form-group row">
-                    <label class="col-sm-5 col-form-label col-form-label-sm" for="divisi">
-                        Divisi
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="status">
+                        Status
                     </label>
                     <div class="col-sm-5">
                         <?php
-                        echo cmb_dinamis('kode_divisi', 'tbl_divisi', 'divisi', 'kode_divisi');
+                        echo cmb_dinamis('kode_status', 'tbl_status', 'status', 'kode_status');
                         ?>
                     </div>
-                    <?= form_error('kode_divisi', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                    <?= form_error('kode_status', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label" for="role_id">
                         Role
                     </label>
@@ -79,7 +79,7 @@
                     <?php elseif ($tbl_user['role_id'] == 3) : ?>
                     <i class="col-form-label col-form-label"></i>
                     <?php endif; ?>
-                </div>
+                </div> -->
             <div class="form-group row">
             <label class="col-sm-5 col-form-label col-form-label" for="foto">
                     Foto

@@ -24,7 +24,7 @@ class Model_dokuments extends CI_Model
             $this->db->or_like('nomor', $keyword);
             $this->db->or_like('title', $keyword);
             $this->db->or_like('deskripsi', $keyword);
-            $this->db->or_like('name_file', $keyword);
+            // $this->db->or_like('name_file', $keyword);
         }
 
         return $this->db->get('tbl_dokuments', $limit, $start)->result_array();

@@ -30,9 +30,9 @@ class User extends CI_Controller
         $data['tbl_user'] = $this->Model_user->getAdmin();
         $data['tbl_dokuments'] = $this->Model_dokuments->getDokuments();
         $this->load->model('Model_pegawai', 'jabatan');
-        $data['kdJabatan'] = $this->jabatan->getkdJabatan();
-        $this->load->model('Model_pegawai', 'divisi');
-        $data['kdDivisi'] = $this->divisi->getkdDivisi();
+        $data['kdJabatan'] = $this->jabatan->getkdJabatanrow();
+        $this->load->model('Model_pegawai', 'status');
+        $data['kdStatus'] = $this->status->getkdStatusrow();
         // $this->load->model('Model_user', 'role');
         // $data['kdRoleId'] = $this->role->getkdRoleId();
         $this->load->view('templates/_partials/header', $data);

@@ -32,7 +32,7 @@ class Pegawai extends CI_Controller
         $this->db->or_like('email', $data['keyword']);
         // $this->db->or_like('deskripsi', $data['keyword']);
                 
-        $this->db->from('tbl_user');
+        $this->db->from('tbl_pegawai');
         $config['total_rows'] = $this->db->count_all_results();
         $data['total_rows'] = $config['total_rows'];
         $config['per_page'] = 5;
@@ -44,10 +44,10 @@ class Pegawai extends CI_Controller
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
         $this->load->model('Model_pegawai', 'jabatan');
-        $this->load->model('Model_pegawai', 'divisi');
+        $this->load->model('Model_pegawai', 'status');
         $data['kdJabatan'] = $this->jabatan->getkdJabatan();
-        $data['kdDivisi']  = $this->divisi->getkdDivisi();
-        // $data['tbl_user'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
+        $data['kdStatus']  = $this->status->getkdStatus();
+        // $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -60,13 +60,13 @@ class Pegawai extends CI_Controller
     {
         is_logged_in();
         
-        // $this->form_validation->set_rules('nik', 'Nomor', 'required|trim');
+        // $this->form_validation->set_rules('nrh', 'Nomor', 'required|trim');
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
         $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('kode_divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('kode_status', 'Status', 'required');
         $this->form_validation->set_rules('role_id', 'Role', 'required');
 
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_user.email]', [
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_pegawai.email]', [
             'is_unique' => 'Email sudah terdaftar!'
         ]);
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
@@ -86,10 +86,10 @@ class Pegawai extends CI_Controller
         // $this->session->set_flashdata('flash', 'diupload');
             // redirect('pegawai');
         } else {
-            $this->db->select('RIGHT(tbl_user.nik,3) as kode', false);
-            $this->db->order_by('nik', 'DESC');
+            $this->db->select('RIGHT(tbl_pegawai.nrh,3) as kode', false);
+            $this->db->order_by('nrh', 'DESC');
             $this->db->limit(1);
-            $query = $this->db->get('tbl_user'); // cek sudah ada atau belum kodenya
+            $query = $this->db->get('tbl_pegawai'); // cek sudah ada atau belum kodenya
             if ($query->num_rows() <> 0) {
                 //jika kodenya sudah ada.      
                 $data = $query->row();
@@ -108,15 +108,15 @@ class Pegawai extends CI_Controller
         }
     }
 
-    public function edit($id_user)
+    public function edit($id_pegawai)
     {
         is_logged_in();
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
         $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('kode_divisi', 'Divisi', 'required');
+        $this->form_validation->set_rules('kode_status', 'Status', 'required');
         $this->form_validation->set_rules('role_id', 'Role', 'required');
 
-        // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_user.email]', [
+        // $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbl_pegawai.email]', [
         //     'is_unique' => 'Email sudah terdaftar!'
         // ]);
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
@@ -128,32 +128,32 @@ class Pegawai extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Pegawai';
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['tbl_user'] = $this->Model_pegawai->getPegawaiId($id_user);
+            $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiId($id_pegawai);
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
             $this->load->view('pegawai/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_pegawai->editPegawai($id_user);
+            $this->Model_pegawai->editPegawai($id_pegawai);
             $this->session->set_flashdata('flash', 'diupdate');
             redirect('pegawai');
         }
     }
 
-    public function detail($id_user)
+    public function detail($id_pegawai)
     {
         is_logged_in();
 
         $data['tbl_user'] = $this->Model_user->getAdmin();
         $data['title'] = 'Detail Pegawai';
         $this->load->model('Model_pegawai', 'jabatan');
-        $data['kdJabatanId'] = $this->jabatan->getkdJabatanId($id_user);
-        $this->load->model('Model_pegawai', 'divisi');
-        $data['kdDivisiId'] = $this->divisi->getkdDivisiId($id_user);
+        $data['kdJabatanId'] = $this->jabatan->getkdJabatanId($id_pegawai);
+        $this->load->model('Model_pegawai', 'status');
+        $data['kdStatusId'] = $this->status->getkdStatusId($id_pegawai);
         // $this->load->model('Kotak_model', 'kotak');
         // $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
-        $data['tbl_user'] = $this->Model_pegawai->getPegawaiId($id_user);
+        $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiId($id_pegawai);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);

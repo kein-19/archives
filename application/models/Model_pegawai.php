@@ -6,12 +6,13 @@ class Model_pegawai extends CI_Model
 
     public function getAllPegawai()
     {
-        return $this->db->get('tbl_user')->result_array();
+        return $this->db->get('tbl_pegawai')->result_array();
     }
 
     public function getPegawai()
     {
-        return $this->db->get_where('tbl_user', ['id' => $this->session->userdata('id')])->row_array();
+        // return $this->db->get_where('tbl_pegawai', ['email' => $this->session->userdata('email')])->row_array();
+        return $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array();
     }
 
     // fitur untuk pagination
@@ -20,58 +21,76 @@ class Model_pegawai extends CI_Model
     {
         // untuk pencarian
         if ($keyword) {
-            $this->db->like('nik', $keyword);
+            $this->db->like('nrh', $keyword);
             $this->db->or_like('nama_lengkap', $keyword);
-            $this->db->or_like('divisi', $keyword);
+            $this->db->or_like('status', $keyword);
         }
 
-        return $this->db->get('tbl_user', $limit, $start)->result_array();
+        return $this->db->get('tbl_pegawai', 5, $start)->result_array();
     }
 
     public function countAllPegawai()
     {
-        return $this->db->get('tbl_user')->num_rows();
+        return $this->db->get('tbl_pegawai')->num_rows();
     }
 
-    public function getPegawaiId($id_user)
+    public function getPegawaiId($id_pegawai)
     {
-        return $this->db->get_where('tbl_user', ['id_user' => $id_user])->row_array();
+        return $this->db->get_where('tbl_pegawai', ['id_pegawai' => $id_pegawai])->row_array();
     }
 
     public function getkdJabatan()
     {
-        $query = "SELECT `tbl_user`.*, `tbl_jabatan`.`jabatan`
-                  FROM `tbl_user` JOIN `tbl_jabatan`
-                  ON `tbl_user`.`kode_jabatan` = `tbl_jabatan`.`kode_jabatan`
+        $query = "SELECT `tbl_pegawai`.*, `tbl_jabatan`.`jabatan`
+                  FROM `tbl_pegawai` JOIN `tbl_jabatan`
+                  ON `tbl_pegawai`.`kode_jabatan` = `tbl_jabatan`.`kode_jabatan`
+                  ";
+        return $this->db->query($query)->result_array();
+    }
+    
+    public function getkdStatus()
+    {
+        $query = "SELECT `tbl_pegawai`.*, `tbl_status`.`status`
+                  FROM `tbl_pegawai` JOIN `tbl_status`
+                  ON `tbl_pegawai`.`kode_status` = `tbl_status`.`kode_status`
                 ";
         return $this->db->query($query)->result_array();
     }
     
-    public function getkdDivisi()
+    public function getkdJabatanrow()
     {
-        $query = "SELECT `tbl_user`.*, `tbl_divisi`.`divisi`
-                  FROM `tbl_user` JOIN `tbl_divisi`
-                  ON `tbl_user`.`kode_divisi` = `tbl_divisi`.`kode_divisi`
+        $query = "SELECT `tbl_pegawai`.`kode_jabatan`, `tbl_jabatan`.`jabatan`
+                  FROM `tbl_pegawai` JOIN `tbl_jabatan`
+                  ON `tbl_pegawai`.`kode_jabatan` = `tbl_jabatan`.`kode_jabatan`
+                  ";
+        return $this->db->query($query)->row_array();
+    }
+    
+    public function getkdStatusrow()
+    {
+        $query = "SELECT `tbl_pegawai`.`kode_status`, `tbl_status`.`status`
+                  FROM `tbl_pegawai` JOIN `tbl_status`
+                  ON `tbl_pegawai`.`kode_status` = `tbl_status`.`kode_status`
                 ";
-        return $this->db->query($query)->result_array();
+        return $this->db->query($query)->row_array();
     }
 
-    public function getkdJabatanId($id_user)
+    public function getkdJabatanId($id_pegawai)
     {
-        $query = "SELECT `tbl_user`.*, `tbl_jabatan`.`jabatan`
-                  FROM `tbl_user` JOIN `tbl_jabatan`
-                  ON `tbl_user`.`kode_jabatan` = `tbl_jabatan`.`kode_jabatan`
-                  WHERE `tbl_user`.`id_user` = $id_user
+        $query = "SELECT `tbl_pegawai`.*, `tbl_jabatan`.`jabatan`
+                  FROM `tbl_pegawai` JOIN `tbl_jabatan`
+                  ON `tbl_pegawai`.`kode_jabatan` = `tbl_jabatan`.`kode_jabatan`
+                  WHERE `tbl_pegawai`.`id_pegawai` = $id_pegawai
                 ";
         return $this->db->query($query)->row_array();
     }
     
-    public function getkdDivisiId($id_user)
+    public function getkdStatusId($id_pegawai)
     {
-        $query = "SELECT `tbl_user`.*, `tbl_divisi`.`divisi`
-                  FROM `tbl_user` JOIN `tbl_divisi`
-                  ON `tbl_user`.`kode_divisi` = `tbl_divisi`.`kode_divisi`
-                  WHERE `tbl_user`.`id_user` = $id_user
+        $query = "SELECT `tbl_pegawai`.*, `tbl_status`.`status`
+                  FROM `tbl_pegawai` JOIN `tbl_status`
+                  ON `tbl_pegawai`.`kode_status` = `tbl_status`.`kode_status`
+                  WHERE `tbl_pegawai`.`id_pegawai` = $id_pegawai
                 ";
         return $this->db->query($query)->row_array();
     }
@@ -83,9 +102,9 @@ class Model_pegawai extends CI_Model
         $data = [
             'nama_lengkap'      => htmlspecialchars($this->input->post('nama_lengkap', true)),
             'email'             => htmlspecialchars($email),
-            'nik'               => ($fixkode),
+            'nrh'               => ($fixkode),
             'kode_jabatan'      => $this->input->post('kode_jabatan', TRUE),
-            'kode_divisi'       => $this->input->post('kode_divisi', TRUE),
+            'kode_status'       => $this->input->post('kode_status', TRUE),
             'role_id'           => $this->input->post('role_id', TRUE),
             'kode_jabatan'      => $this->input->post('kode_jabatan', TRUE),
             'foto'              => 'default.png',
@@ -96,19 +115,19 @@ class Model_pegawai extends CI_Model
         ];
         
 
-            $this->db->insert('tbl_user', $data);
+            $this->db->insert('tbl_pegawai', $data);
     }
 
-    public function editPegawai($id_user)
+    public function editPegawai($id_pegawai)
     {
 
         $email = $this->input->post('email', true);
         $data = [
             'nama_lengkap'      => htmlspecialchars($this->input->post('nama_lengkap', true)),
             'email'             => htmlspecialchars($email),
-            // 'nik'               => ($fixkode),
+            // 'nrh'               => ($fixkode),
             'kode_jabatan'      => $this->input->post('kode_jabatan', TRUE),
-            'kode_divisi'       => $this->input->post('kode_divisi', TRUE),
+            'kode_status'       => $this->input->post('kode_status', TRUE),
             'role_id'           => $this->input->post('role_id', TRUE),
             'kode_jabatan'      => $this->input->post('kode_jabatan', TRUE),
             // 'foto'              => 'default.png',
@@ -129,7 +148,7 @@ class Model_pegawai extends CI_Model
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('image')) {
-                $old_image = $data['tbl_user']['image'];
+                $old_image = $data['tbl_pegawai']['image'];
                 if ($old_image != 'default.jpg') {
                     unlink(FCPATH . 'assets/archives/' . $old_image);
                 }
@@ -141,15 +160,15 @@ class Model_pegawai extends CI_Model
             }
         }
 
-        $this->db->where('id_user', $id_user);
-        $this->db->update('tbl_user', $data);
+        $this->db->where('id_pegawai', $id_pegawai);
+        $this->db->update('tbl_pegawai', $data);
     }
 
-    public function deletePegawai($id_user)
+    public function deletePegawai($id_pegawai)
     {
         $this->db->delete(
-            'tbl_user',
-            ['id_user' => $id_user]
+            'tbl_pegawai',
+            ['id_pegawai' => $id_pegawai]
         );
     }
 }

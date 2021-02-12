@@ -29,8 +29,8 @@
                             <p class="card-text col-sm-7"><?= $kdJabatanId['jabatan']; ?></p>
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5">Divisi</p>
-                            <p class="card-text col-sm-7"><?= $kdDivisiId['divisi']; ?></p>
+                            <p class="card-text col-sm-5">Status</p>
+                            <p class="card-text col-sm-7"><?= $kdStatusId['status']; ?></p>
                         </div>
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Role</p>

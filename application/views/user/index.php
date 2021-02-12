@@ -23,10 +23,10 @@
                             <p class="card-text col-sm-7"><?= $kdJabatan['jabatan']; ?></p>
                         </div>
                         <div class="form-group row">
-                            <p class="card-text col-sm-5">Divisi</p>
-                            <p class="card-text col-sm-7"><?= $kdDivisi['divisi']; ?></p>
+                            <p class="card-text col-sm-5">Status</p>
+                            <p class="card-text col-sm-7"><?= $kdStatus['status']; ?></p>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <p class="card-text col-sm-5">Role</p>
                             <?php if ($tbl_user['role_id'] == 1) : ?>
                             <p class="card-text col-sm-7 ">Administrator</p>
@@ -35,8 +35,7 @@
                             <?php elseif ($tbl_user['role_id'] == 3) : ?>
                             <p class="card-text col-sm-7 ">Badan Kepegawaian Daerah</p>
                             <?php endif; ?>
-                            <!-- <p class="card-text col-sm-7"><?= $tbl_user['role_id']; ?></p> -->
-                        </div>
+                        </div> -->
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Email</p>
                             <p class="card-text col-sm-7"><?= $tbl_user['email']; ?></p>
