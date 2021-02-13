@@ -14,9 +14,9 @@
                 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
 
                 <div class="row mt-3 mb-2">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <a href="<?= base_url('dokuments/add'); ?>" class="btn btn-primary">Tambah Data Dokuments</a>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-2">
                         <h5 class="mt-2 mb-2">Results : <?= $total_rows; ?></h5>
@@ -70,10 +70,10 @@
                                 <td class="align-middle"><?= $sb['tgl_surat']; ?></td>
                                 
                                 <td class="align-middle text-center">
-                                    <h4><a href="<?= base_url('dokuments/detail/') . $sb['id']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
-                                        <a href="<?= base_url('dokuments/edit/') . $sb['id']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
+                                    <h4><a href="<?= base_url('dokumen/detail/') . $sb['id']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
+                                        <!-- <a href="<?= base_url('dokuments/edit/') . $sb['id']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a> -->
                                         <a href="<?= base_url('assets/archives/') . $sb['image']; ?>" class="badge badge-success" role="button" target="blank" title="download"><i class="fas fa-fw fa-download"></i></a>
-                                        <a href="<?= base_url('dokuments/delete/') . $sb['id']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
+                                        <!-- <a href="<?= base_url('dokuments/delete/') . $sb['id']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

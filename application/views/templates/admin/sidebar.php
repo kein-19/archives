@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <i class="fas fa-archive"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">ARCHIVES</div>
+        <div class="sidebar-brand-text mx-3">ARSIP KEPEGAWAIAN</div>
     </a>
 
     <!-- Divider -->

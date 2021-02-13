@@ -68,15 +68,15 @@
             </div>
 
             <div class="form-group row justify-content-end mt-sm-5">
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <a href="<?= base_url('dokuments/edit/') . $tbl_dokuments['id']; ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
-                </div>
+                </div> -->
                 <div class="col-sm-3">
                     <a href="<?= base_url('assets/archives/') . $tbl_dokuments['image']; ?>" class="print btn btn-success btn-block" role="button" target="blank">Download</a>
                 </div>
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                     <a href="<?= base_url('dokuments/delete/') . $tbl_dokuments['id']; ?>" class="print btn btn-danger btn-block tombol-hapus" role="button">Delete</a>
-                </div>
+                </div> -->
             </div>
         </div>
                 <!-- </form> -->
