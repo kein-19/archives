@@ -11,8 +11,8 @@ class Model_pegawai extends CI_Model
 
     public function getPegawai()
     {
-        // return $this->db->get_where('tbl_pegawai', ['email' => $this->session->userdata('email')])->row_array();
-        return $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array();
+        return $this->db->get_where('tbl_pegawai', ['email' => $this->session->userdata('email')])->row_array();
+        // return $this->db->get_where('tbl_pegawai', ['id_pegawai' => $this->session->userdata('id_pegawai')])->row_array();
     }
 
     // fitur untuk pagination

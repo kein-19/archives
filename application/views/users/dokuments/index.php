@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-sm-12">
 
-            <!-- Daftar Arsip -->
+            <!-- Daftar  Arsip -->
 
             <div class="col-sm-12 mx-auto">
 
@@ -15,7 +15,7 @@
 
                 <div class="row mt-3 mb-2">
                     <div class="col-md-4">
-                        <a href="<?= base_url('siswa/add'); ?>" class="btn btn-primary">Tambah Data Arsip</a>
+                        <a href="<?= base_url('dokuments/add'); ?>" class="btn btn-primary">Tambah Data Dokuments</a>
                     </div>
 
                     <div class="col-md-2">
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <form action="<?= base_url('admin'); ?>" method="post">
+                        <form action="<?= base_url('dokuments'); ?>" method="post">
 
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>
@@ -41,15 +41,16 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col" class="align-middle text-center">No</th>
-                            <th scope="col" class="align-middle">Nomor Formulir</th>
-                            <th scope="col" class="align-middle">Nama Arsip</th>
-                            <th scope="col" class="align-middle">Email</th>
+                            <th scope="col" class="align-middle">Nomor Arsip</th>
+                            <th scope="col" class="align-middle">Judul</th>
+                            <th scope="col" class="align-middle">Jenis</th>
+                            <th scope="col" class="align-middle">Tgl Surat</th>
                             <th scope="col" class="align-middle text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <?php if (empty($tbl_siswa)) : ?>
+                        <?php if (empty($tbl_dokuments)) : ?>
                             <tr>
                                 <td colspan="7">
                                     <div class="alert alert-danger" role="alert">
@@ -59,20 +60,20 @@
                             </tr>
                         <?php endif; ?>
 
-                        <?php foreach ($tbl_siswa as $sb) : ?>
+                        <?php foreach ($tbl_dokuments as $sb) : ?>
 
                             <tr>
                                 <th class="align-middle text-center" scope="row"><?= ++$start; ?></th>
-                                <td class="align-middle"><?= $sb['nis']; ?></td>
-                                <td class="align-middle"><?= $sb['nama']; ?></td>
-                                <td class="align-middle"><?= $sb['email']; ?></td>
-
-                                </td>
+                                <td class="align-middle"><?= $sb['nomor']; ?></td>
+                                <td class="align-middle"><?= $sb['title']; ?></td>
+                                <td class="align-middle"><?= $sb['jenis']; ?></td>
+                                <td class="align-middle"><?= $sb['tgl_surat']; ?></td>
+                                
                                 <td class="align-middle text-center">
-                                    <h4><a href="<?= base_url('siswa/detail/') . $sb['nis']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
-                                        <a href="<?= base_url('siswa/edit/') . $sb['nis']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
-                                        <!-- <a href="<?= base_url('dokuments/print/') . $sb['nis']; ?>" class="badge badge-success" role="button" target="blank" title="print"><i class="fas fa-fw fa-print"></i></a> -->
-                                        <a href="<?= base_url('siswa/delete/') . $sb['nis']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
+                                    <h4><a href="<?= base_url('dokuments/detail/') . $sb['id']; ?>" class="badge badge-secondary" role="button" title="detail"><i class="far fa-fw fa-id-card"></i></a>
+                                        <a href="<?= base_url('dokuments/edit/') . $sb['id']; ?>" class="badge badge-primary" role="button" title="edit"><i class="fas fa-fw fa-edit"></i></a>
+                                        <a href="<?= base_url('assets/archives/') . $sb['image']; ?>" class="badge badge-success" role="button" target="blank" title="download"><i class="fas fa-fw fa-download"></i></a>
+                                        <a href="<?= base_url('dokuments/delete/') . $sb['id']; ?>" class="badge badge-danger tombol-hapus" role="button" title="delete"><i class="fas fa-fw fa-trash"></i></a></h4>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

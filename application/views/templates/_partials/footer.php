@@ -48,6 +48,20 @@
             <!-- Custom scripts for all pages-->
             <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
+
+            <script src="<?= base_url(); ?>assets/js/jquery-3.4.1.min.js"></script>
+            <script src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
+            <script src="<?= base_url(); ?>assets/js/myscript.js"></script>
+            <script src="<?= base_url(); ?>assets/js/password.js"></script>
+            <script src="<?= base_url(); ?>assets/js/submenu.js"></script>
+            <script src="<?= base_url(); ?>assets/js/menu.js"></script>
+            <script src="<?= base_url(); ?>assets/js/kelompok.js"></script>
+            <script src="<?= base_url(); ?>assets/js/lemari.js"></script>
+            <script src="<?= base_url(); ?>assets/js/kotak.js"></script>
+            <script src="<?= base_url(); ?>assets/js/role.js"></script>
+            <script src="<?= base_url(); ?>assets/js/sekolah.js"></script>
+            <script src="<?= base_url(); ?>assets/js/pegawai.js"></script>
+
             <script>
                 $('.custom-file-input').on('change', function() {
                     let fileName = $(this).val().split('\\').pop();

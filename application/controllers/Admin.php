@@ -11,7 +11,7 @@ class Admin extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Model_user');
         $this->load->model('Model_pegawai');
-        // $this->load->model('Model_sekolah');
+        $this->load->model('Model_dokuments');
     }
 
 
@@ -164,6 +164,48 @@ class Admin extends CI_Controller
                     redirect('admin/changepassword');
                 }
             }
+        }
+    }
+
+    public function myProfile()
+    {
+        $data['title'] = 'My Profile';
+        $data['tbl_user'] = $this->Model_user->getAdmin();
+        $data['tbl_dokuments'] = $this->Model_dokuments->getDokuments();
+        $this->load->model('Model_pegawai', 'jabatan');
+        $data['kdJabatan'] = $this->jabatan->getkdJabatanrow();
+        $this->load->model('Model_pegawai', 'status');
+        $data['kdStatus'] = $this->status->getkdStatusrow();
+        // $this->load->model('Model_user', 'role');
+        // $data['kdRoleId'] = $this->role->getkdRoleId();
+        $this->load->view('templates/admin/header', $data);
+        $this->load->view('templates/admin/sidebar', $data);
+        $this->load->view('templates/admin/topbar', $data);
+        $this->load->view('admin/myprofile', $data);
+        $this->load->view('templates/admin/footer');
+    }
+
+    public function editProfile()
+    {
+        $data['title'] = 'Edit Profile';
+        $data['tbl_user'] = $this->Model_user->getAdmin();
+        $data['tbl_dokuments'] = $this->Model_dokuments->getDokuments();
+
+        // $data['tbl_user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('nama_lengkap', 'Full Name', 'required|trim');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/editprofile', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $this->Model_user->editUser();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
+            redirect('user');
         }
     }
 }
