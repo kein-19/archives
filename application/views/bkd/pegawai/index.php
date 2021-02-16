@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <form action="<?= base_url('pegawai'); ?>" method="post">
+                        <form action="<?= base_url('data_pegawai'); ?>" method="post">
 
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Search keyword.." name="keyword" autocomplete="off" autofocus>

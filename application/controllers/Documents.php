@@ -38,7 +38,7 @@ class Documents extends CI_Controller
         $config['per_page'] = 5;
         $root = "http://" . $_SERVER['HTTP_HOST'] . '/';
         $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
-        $root .= 'dokuments/index';
+        $root .= 'pegawai/dokuments/index';
         $config['base_url']    = "$root";
         // initialize
         $this->pagination->initialize($config);
@@ -49,7 +49,7 @@ class Documents extends CI_Controller
         $this->load->view('templates/_partials/header', $data);
         $this->load->view('templates/_partials/sidebar', $data);
         $this->load->view('templates/_partials/topbar', $data);
-        $this->load->view('dokuments/index', $data);
+        $this->load->view('pegawai/dokuments/index', $data);
         $this->load->view('templates/_partials/footer');
     }
 
@@ -75,10 +75,10 @@ class Documents extends CI_Controller
             $this->load->view('templates/_partials/header', $data);
             $this->load->view('templates/_partials/sidebar', $data);
             $this->load->view('templates/_partials/topbar', $data);
-            $this->load->view('dokuments/add', $data);
+            $this->load->view('pegawai/dokuments/add', $data);
             $this->load->view('templates/_partials/footer');
         // $this->session->set_flashdata('flash', 'diupload');
-            // redirect('dokuments');
+            // redirect('documents');
         } else {
             $this->db->select('RIGHT(tbl_dokuments.nomor,3) as kode', false);
             $this->db->order_by('nomor', 'DESC');
@@ -98,7 +98,7 @@ class Documents extends CI_Controller
             $fixkode = $thn . $kodemax;
             $this->Model_dokuments->addDokuments($fixkode);
             $this->session->set_flashdata('flash', 'ditambahkan');
-            redirect('dokuments');
+            redirect('documents');
         }
     }
 
@@ -120,12 +120,12 @@ class Documents extends CI_Controller
             $this->load->view('templates/_partials/header', $data);
             $this->load->view('templates/_partials/sidebar', $data);
             $this->load->view('templates/_partials/topbar', $data);
-            $this->load->view('dokuments/edit', $data);
+            $this->load->view('pegawai/dokuments/edit', $data);
             $this->load->view('templates/_partials/footer');
         } else {
             $this->Model_dokuments->editDokuments($id);
             $this->session->set_flashdata('flash', 'diupdate');
-            redirect('dokuments');
+            redirect('documents');
         }
     }
 
@@ -145,7 +145,7 @@ class Documents extends CI_Controller
         $this->load->view('templates/_partials/header', $data);
         $this->load->view('templates/_partials/sidebar', $data);
         $this->load->view('templates/_partials/topbar', $data);
-        $this->load->view('dokuments/detail', $data);
+        $this->load->view('pegawai/dokuments/detail', $data);
         $this->load->view('templates/_partials/footer');
     }
 
@@ -153,6 +153,6 @@ class Documents extends CI_Controller
     {
         $this->Model_dokuments->deleteDokuments($id);
         $this->session->set_flashdata('flash', 'dihapus');
-        redirect('dokuments');
+        redirect('documents');
     }
 }

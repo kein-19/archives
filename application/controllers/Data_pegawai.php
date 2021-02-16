@@ -5,9 +5,7 @@ class Data_pegawai extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->userdata('email')) {
-            redirect('auth');
-        }
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('Model_user');
         $this->load->model('Model_pegawai');

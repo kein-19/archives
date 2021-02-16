@@ -4,19 +4,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Model_dokumen extends CI_Model
 {
 
-    public function getAllDokuments()
+    public function getAllDokumen()
     {
         return $this->db->get('tbl_dokuments')->result_array();
     }
 
-    public function getDokuments()
+    public function getDokumen()
     {
         return $this->db->get_where('tbl_dokuments', ['id' => $this->session->userdata('id')])->row_array();
     }
 
     // fitur untuk pagination
-    public function getDokumentsLimit($limit, $start, $keyword = null)
-    // public function getDokumentsLimit($limit, $start)
+    public function getDokumenLimit($limit, $start, $keyword = null)
+    // public function getDokumenLimit($limit, $start)
     {
         // untuk pencarian
         if ($keyword) {
@@ -29,35 +29,35 @@ class Model_dokumen extends CI_Model
         return $this->db->get('tbl_dokuments', $limit, $start)->result_array();
     }
 
-    public function countAllDokuments()
+    public function countAllDokumen()
     {
         return $this->db->get('tbl_dokuments')->num_rows();
     }
 
-    public function getDokumentsId($id)
+    public function getDokumenId($id)
     {
         return $this->db->get_where('tbl_dokuments', ['id' => $id])->row_array();
     }
 
-    // public function getDokuments()
+    // public function getDokumen()
     // {
     //     return $this->db->get('tbl_dokuments')->row();
     // }
 
-    // public function getAllDokuments()
+    // public function getAllDokumen()
     // {
     //     return $this->db->get('tbl_dokuments')->result_array();
     // }
 
-    // public function getDokumentsId($id)
+    // public function getDokumenId($id)
     // {
     //     return $this->db->get_where('tbl_dokuments', ['id' => $id])->row_array();
     // }
 
 
     // // fitur untuk pagination
-    // public function getDokumentsLimit($limit, $start, $keyword = null)
-    // // public function getDokumentsLimit($limit, $start)
+    // public function getDokumenLimit($limit, $start, $keyword = null)
+    // // public function getDokumenLimit($limit, $start)
     // {
     //     // untuk pencarian
     //     if ($keyword) {
@@ -67,13 +67,13 @@ class Model_dokumen extends CI_Model
     //     return $this->db->get('tbl_dokuments', $limit, $start)->result_array();
     // }
 
-    // public function countAllDokuments()
+    // public function countAllDokumen()
     // {
     //     return $this->db->get('tbl_dokuments')->num_rows();
     // }
 
-    public function addDokuments($fixkode)
-    // public function addDokuments()
+    public function addDokumen($fixkode)
+    // public function addDokumen()
     {
 
         $data = [
@@ -113,7 +113,7 @@ class Model_dokumen extends CI_Model
         }
     }
 
-    public function editDokuments($id)
+    public function editDokumen($id)
     {
 
         $data = [
@@ -153,7 +153,7 @@ class Model_dokumen extends CI_Model
         $this->db->update('tbl_dokuments', $data);
     }
 
-    public function deleteDokuments($id)
+    public function deleteDokumen($id)
     {
         $this->db->delete(
             'tbl_dokuments',

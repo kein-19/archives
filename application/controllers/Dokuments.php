@@ -5,6 +5,11 @@ class Dokuments extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
+
+        // if (!$this->session->userdata('email')) {
+        //     redirect('auth');
+        // }
         $this->load->library('form_validation');
         $this->load->model('Model_user');
         $this->load->model('Model_dokuments');

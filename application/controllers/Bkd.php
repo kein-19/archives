@@ -9,9 +9,7 @@ class Bkd extends CI_Controller
         parent::__construct();
         // sementara memakai if dulu 
         // is_logged_in();
-        if (!$this->session->userdata('email')) {
-            redirect('auth');
-        }
+        is_logged_in();
 
         //chekAksesModule();
         $this->load->library('form_validation');

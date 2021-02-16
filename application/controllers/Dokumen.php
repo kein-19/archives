@@ -5,9 +5,7 @@ class Dokumen extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->userdata('email')) {
-            redirect('auth');
-        }
+        is_logged_in();
         $this->load->library('form_validation');
         $this->load->model('Model_user');
         $this->load->model('Model_dokumen');
@@ -18,22 +16,22 @@ class Dokumen extends CI_Controller
 
     public function index()
     {
-        // is_logged_in();
-        $data['title'] = 'List Dokuments';
+        is_logged_in();
+        $data['title'] = 'List Dokumen';
         $data['tbl_user'] = $this->Model_user->getAdmin();
         // load library
         $this->load->library('pagination');
-        // ambil data keyword
+        // ambil data pencarian
         if ($this->input->post('submit')) {
-            $data['keyword'] = $this->input->post('keyword');
-            $this->session->set_userdata('keyword', $data['keyword']);
+            $data['pencarian'] = $this->input->post('pencarian');
+            $this->session->set_userdata('pencarian', $data['pencarian']);
         } else {
-            $data['keyword'] = $this->session->userdata('keyword');
+            $data['pencarian'] = $this->session->userdata('pencarian');
         }
         // config
-        $this->db->like('title', $data['keyword']);
-        $this->db->or_like('nomor', $data['keyword']);
-        $this->db->or_like('nama_lengkap', $data['keyword']);
+        $this->db->like('title', $data['pencarian']);
+        $this->db->or_like('nomor', $data['pencarian']);
+        $this->db->or_like('nama_lengkap', $data['pencarian']);
                 
         $this->db->from('tbl_dokuments');
         $config['total_rows'] = $this->db->count_all_results();
@@ -48,7 +46,7 @@ class Dokumen extends CI_Controller
         $data['start'] = $this->uri->segment(3);
         // $this->load->model('Kelompok_model', 'kelompok');
         // $data['kdKelompok'] = $this->kelompok->getkdKelompok();
-        $data['tbl_dokuments'] = $this->Model_dokumen->getDokumentsLimit($config['per_page'], $data['start'], $data['keyword']);
+        $data['tbl_dokuments'] = $this->Model_dokumen->getDokumenLimit($config['per_page'], $data['start'], $data['pencarian']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -59,7 +57,7 @@ class Dokumen extends CI_Controller
     // profile sekolah pada halaman home
     public function add()
     {
-        // is_logged_in();
+        is_logged_in();
         
         // $this->form_validation->set_rules('nomor', 'Nomor', 'required|trim');
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
@@ -71,9 +69,9 @@ class Dokumen extends CI_Controller
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 
         // $this->form_validation->set_rules('title', 'Title', 'required|trim');
-        // $this->form_validation->set_rules('', 'Dokuments', 'required');
+        // $this->form_validation->set_rules('', 'Dokumen', 'required');
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Add Dokuments';
+            $data['title'] = 'Add Dokumen';
             $data['tbl_user'] = $this->Model_user->getAdmin();
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
@@ -99,7 +97,7 @@ class Dokumen extends CI_Controller
             $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
             $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT);
             $fixkode = $thn . $kodemax;
-            $this->Model_dokumen->addDokuments($fixkode);
+            $this->Model_dokumen->addDokumen($fixkode);
             $this->session->set_flashdata('flash', 'ditambahkan');
             redirect('dokumen');
         }
@@ -107,7 +105,7 @@ class Dokumen extends CI_Controller
 
     public function edit($id)
     {
-        // is_logged_in();
+        is_logged_in();
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
         $this->form_validation->set_rules('kelompok_id', 'Kelompok', 'required');
@@ -117,16 +115,16 @@ class Dokumen extends CI_Controller
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
         
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Edit Dokuments';
+            $data['title'] = 'Edit Dokumen';
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['tbl_dokuments'] = $this->Model_dokumen->getDokumentsId($id);
+            $data['tbl_dokuments'] = $this->Model_dokumen->getDokumenId($id);
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
             $this->load->view('bkd/dokumen/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_dokumen->editDokuments($id);
+            $this->Model_dokumen->editDokumen($id);
             $this->session->set_flashdata('flash', 'diupdate');
             redirect('dokumen');
         }
@@ -134,17 +132,17 @@ class Dokumen extends CI_Controller
 
     public function detail($id)
     {
-        // is_logged_in();
+        is_logged_in();
 
         $data['tbl_user'] = $this->Model_user->getAdmin();
-        $data['title'] = 'Detail Dokuments';
+        $data['title'] = 'Detail Dokumen';
         $this->load->model('Kelompok_model', 'kelompok');
         $data['kdKelompokId'] = $this->kelompok->getkdKelompokId($id);
         $this->load->model('Lemari_model', 'lemari');
         $data['kdLemariId'] = $this->lemari->getkdLemariId($id);
         $this->load->model('Kotak_model', 'kotak');
         $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
-        $data['tbl_dokuments'] = $this->Model_dokumen->getDokumentsId($id);
+        $data['tbl_dokuments'] = $this->Model_dokumen->getDokumenId($id);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -154,7 +152,7 @@ class Dokumen extends CI_Controller
 
     public function delete($id)
     {
-        $this->Model_dokumen->deleteDokuments($id);
+        $this->Model_dokumen->deleteDokumen($id);
         $this->session->set_flashdata('flash', 'dihapus');
         redirect('dokumen');
     }
