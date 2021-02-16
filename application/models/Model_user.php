@@ -29,9 +29,8 @@ class Model_user extends CI_Model
         $email = htmlspecialchars($this->input->post('email', TRUE));
         $password = htmlspecialchars($this->input->post('password', TRUE));
 
-        if ($email == 'admin@gmail.com')
-        {
-                $user = $this->db->get_where('tbl_user', ['email' => $email])->row_array();
+        if ($email == 'admin@gmail.com') {
+            $user = $this->db->get_where('tbl_user', ['email' => $email])->row_array();
 
             // jika usernya ada
             if ($user) {
@@ -45,9 +44,9 @@ class Model_user extends CI_Model
                         ];
                         $this->session->set_userdata($data);
                         if ($user['role_id'] == 1) {
-                        redirect('admin');
+                            redirect('admin');
                         } else {
-                        redirect('user');
+                            redirect('user');
                         }
                     } else {
                         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Anda Salah!</div>');
@@ -63,7 +62,7 @@ class Model_user extends CI_Model
             }
         } else if ($email == 'bkd@gmail.com') {
             $user = $this->db->get_where('tbl_user', ['email' => $email])->row_array();
-            
+
             // jika usernya ada
             if ($user) {
                 // jika usernya aktif
@@ -95,7 +94,7 @@ class Model_user extends CI_Model
             }
         } else {
             $user = $this->db->get_where('tbl_pegawai', ['email' => $email])->row_array();
-            
+
             // jika usernya ada
             if ($user) {
                 // jika usernya aktif
@@ -126,8 +125,6 @@ class Model_user extends CI_Model
                 redirect('auth');
             }
         }
-
-        
     }
 
     public function tambahUser()
@@ -175,41 +172,41 @@ class Model_user extends CI_Model
 
     public function editUser()
     {
-        
+
         $email = $this->input->post('email');
         $data = [
             'nama_lengkap'          => $this->input->post('nama_lengkap', TRUE),
-            // 'email'                 => $this->input->post('email', TRUE),
-            'role_id'               => $this->input->post('role_id', TRUE),
-            ];
-            // $name = $this->input->post('nama_lengkap');
-            // $role_id = $this->input->post('role_id');
+            'email'                 => $this->input->post('email', TRUE),
+            // 'role_id'               => $this->input->post('role_id', TRUE),
+        ];
+        // $name = $this->input->post('nama_lengkap');
+        // $role_id = $this->input->post('role_id');
 
-            // cek jika ada gambar yang akan diupload
-            $upload_foto = $_FILES['foto']['name'];
+        // cek jika ada gambar yang akan diupload
+        $upload_foto = $_FILES['foto']['name'];
 
-            if ($upload_foto) {
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']      = '2048';
-                $config['upload_path'] = './assets/img/profile/';
+        if ($upload_foto) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']      = '2048';
+            $config['upload_path'] = './assets/img/profile/';
 
-                $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('foto')) {
-                    $old_foto = $data['tbl_user']['foto'];
-                    if ($old_foto != 'default.png') {
-                        unlink(FCPATH . 'assets/img/profile/' . $old_foto);
-                    }
-                    $new_foto = $this->upload->data('file_name');
-                    $this->db->set('foto', $new_foto);
-                } else {
-                    echo $this->upload->dispay_errors();
+            if ($this->upload->do_upload('foto')) {
+                $old_foto = $data['tbl_user']['foto'];
+                if ($old_foto != 'default.png') {
+                    unlink(FCPATH . 'assets/img/profile/' . $old_foto);
                 }
+                $new_foto = $this->upload->data('file_name');
+                $this->db->set('foto', $new_foto);
+            } else {
+                echo $this->upload->dispay_errors();
             }
+        }
 
-            // $this->db->set('nama_lengkap', $name);
-            $this->db->where('email', $email);
-            $this->db->update('tbl_user', $data);
+        // $this->db->set('nama_lengkap', $name);
+        $this->db->where('email', $email);
+        $this->db->update('tbl_user', $data);
 
         // $this->db->where('id', $id);
         // $this->db->update('tbl_dokuments', $data);

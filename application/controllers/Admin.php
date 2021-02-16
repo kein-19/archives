@@ -20,11 +20,11 @@ class Admin extends CI_Controller
         $data['title'] = 'Dashboard';
         $data['tbl_user'] = $this->Model_user->getAdmin();
         // $data['tbl_user'] = $this->Model_pegawai->countAllPegawai();
-        
+
         $this->db->from('tbl_dokuments');
         $config['total_rows'] = $this->db->count_all_results();
-        $data['total_rows'] = $config['total_rows'];        
-        
+        $data['total_rows'] = $config['total_rows'];
+
         $this->db->from('tbl_pegawai');
         $config['total_pegawai'] = $this->db->count_all_results();
         $data['total_pegawai'] = $config['total_pegawai'];
@@ -194,7 +194,7 @@ class Admin extends CI_Controller
         // $data['tbl_user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('nama_lengkap', 'Full Name', 'required|trim');
-        $this->form_validation->set_rules('role_id', 'Role', 'required');
+        // $this->form_validation->set_rules('role_id', 'Role', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin/header', $data);
@@ -205,7 +205,7 @@ class Admin extends CI_Controller
         } else {
             $this->Model_user->editUser();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
-            redirect('user');
+            redirect('admin/myprofile');
         }
     }
 }

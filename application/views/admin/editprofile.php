@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-8">
 
-            <?= form_open_multipart('user/edit'); ?>
+            <?= form_open_multipart('admin/editprofile'); ?>
             <div class="form-group row">
                 <label class="col-sm-5 col-form-label col-form-label" for="email">
                     Email
@@ -81,16 +81,16 @@
                     <?php endif; ?>
                 </div> -->
             <div class="form-group row">
-            <label class="col-sm-5 col-form-label col-form-label" for="foto">
+                <label class="col-sm-5 col-form-label col-form-label" for="foto">
                     Foto
-            </label>
-            <div class="col-sm-7">
-                <img src="<?= base_url('assets/img/profile/') . $tbl_user['foto'] ?>" class="img-thumbnail mb-sm-3 p-sm-2">
-                <div class="custom-file col-form-label col-form-label-sm">
-                    <input type="file" class="custom-file-input" id="foto" name="foto">
-                    <label class="custom-file-label" for="foto"><?= $tbl_user['foto']; ?></label>
+                </label>
+                <div class="col-sm-7">
+                    <img src="<?= base_url('assets/img/profile/') . $tbl_user['foto'] ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                    <div class="custom-file col-form-label col-form-label-sm">
+                        <input type="file" class="custom-file-input" id="foto" name="foto">
+                        <label class="custom-file-label" for="foto"><?= $tbl_user['foto']; ?></label>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="row justify-content-end">
                 <div class="col-sm-4">
@@ -111,4 +111,4 @@
 <!-- /.container-fluid -->
 
 </div>
-<!-- End of Main Content --> 
+<!-- End of Main Content -->

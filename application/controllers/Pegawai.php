@@ -31,11 +31,11 @@ class Pegawai extends CI_Controller
         $this->db->like('nrh', $data['keyword']);
         $this->db->or_like('nama_lengkap', $data['keyword']);
         $this->db->or_like('email', $data['keyword']);
-                
+
         $this->db->from('tbl_pegawai');
         $config['total_rows'] = $this->db->count_all_results();
         $data['total_rows'] = $config['total_rows'];
-        $config['per_page'] = 5;
+        $config['per_page'] = 10;
         $root = "http://" . $_SERVER['HTTP_HOST'] . '/';
         $root .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
         $root .= 'pegawai/index';
@@ -43,7 +43,7 @@ class Pegawai extends CI_Controller
         // initialize
         $this->pagination->initialize($config);
         $data['start'] = $this->uri->segment(3);
-        
+
         $data['tbl_pegawai'] = $this->Model_pegawai->getPegawaiLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
@@ -56,7 +56,7 @@ class Pegawai extends CI_Controller
     public function add()
     {
         is_logged_in();
-        
+
         // $this->form_validation->set_rules('nrh', 'Nomor', 'required|trim');
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
         $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
@@ -71,7 +71,7 @@ class Pegawai extends CI_Controller
             'min_length' => 'Password terlalu pendek!'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-        
+
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Add Pegawai';
             $data['tbl_user'] = $this->Model_user->getAdmin();
@@ -80,7 +80,7 @@ class Pegawai extends CI_Controller
             $this->load->view('templates/admin/topbar', $data);
             $this->load->view('pegawai/add', $data);
             $this->load->view('templates/admin/footer');
-        // $this->session->set_flashdata('flash', 'diupload');
+            // $this->session->set_flashdata('flash', 'diupload');
             // redirect('pegawai');
         } else {
             $this->db->select('RIGHT(tbl_pegawai.nrh,3) as kode', false);
@@ -121,7 +121,7 @@ class Pegawai extends CI_Controller
             'min_length' => 'Password terlalu pendek!'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-        
+
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Pegawai';
             $data['tbl_user'] = $this->Model_user->getAdmin();
