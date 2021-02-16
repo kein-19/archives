@@ -10,7 +10,7 @@ class Dokumen extends CI_Controller
         }
         $this->load->library('form_validation');
         $this->load->model('Model_user');
-        $this->load->model('Model_dokuments');
+        $this->load->model('Model_dokumen');
         $this->load->model('Kelompok_Model');
         $this->load->model('Lemari_Model');
         $this->load->model('Kotak_Model');
@@ -33,7 +33,7 @@ class Dokumen extends CI_Controller
         // config
         $this->db->like('title', $data['keyword']);
         $this->db->or_like('nomor', $data['keyword']);
-        $this->db->or_like('jenis', $data['keyword']);
+        $this->db->or_like('nama_lengkap', $data['keyword']);
                 
         $this->db->from('tbl_dokuments');
         $config['total_rows'] = $this->db->count_all_results();
@@ -48,7 +48,7 @@ class Dokumen extends CI_Controller
         $data['start'] = $this->uri->segment(3);
         // $this->load->model('Kelompok_model', 'kelompok');
         // $data['kdKelompok'] = $this->kelompok->getkdKelompok();
-        $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsLimit($config['per_page'], $data['start'], $data['keyword']);
+        $data['tbl_dokuments'] = $this->Model_dokumen->getDokumentsLimit($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -99,7 +99,7 @@ class Dokumen extends CI_Controller
             $thn = substr(date('Y'), 2, 2) . substr(date('Y', strtotime('+1 years')), 2, 2);
             $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT);
             $fixkode = $thn . $kodemax;
-            $this->Model_dokuments->addDokuments($fixkode);
+            $this->Model_dokumen->addDokuments($fixkode);
             $this->session->set_flashdata('flash', 'ditambahkan');
             redirect('dokumen');
         }
@@ -119,14 +119,14 @@ class Dokumen extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Edit Dokuments';
             $data['tbl_user'] = $this->Model_user->getAdmin();
-            $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsId($id);
+            $data['tbl_dokuments'] = $this->Model_dokumen->getDokumentsId($id);
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
             $this->load->view('bkd/dokumen/edit', $data);
             $this->load->view('templates/admin/footer');
         } else {
-            $this->Model_dokuments->editDokuments($id);
+            $this->Model_dokumen->editDokuments($id);
             $this->session->set_flashdata('flash', 'diupdate');
             redirect('dokumen');
         }
@@ -144,7 +144,7 @@ class Dokumen extends CI_Controller
         $data['kdLemariId'] = $this->lemari->getkdLemariId($id);
         $this->load->model('Kotak_model', 'kotak');
         $data['kdKotakId'] = $this->kotak->getkdKotakId($id);
-        $data['tbl_dokuments'] = $this->Model_dokuments->getDokumentsId($id);
+        $data['tbl_dokuments'] = $this->Model_dokumen->getDokumentsId($id);
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar', $data);
         $this->load->view('templates/admin/topbar', $data);
@@ -154,7 +154,7 @@ class Dokumen extends CI_Controller
 
     public function delete($id)
     {
-        $this->Model_dokuments->deleteDokuments($id);
+        $this->Model_dokumen->deleteDokuments($id);
         $this->session->set_flashdata('flash', 'dihapus');
         redirect('dokumen');
     }

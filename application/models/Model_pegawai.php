@@ -171,4 +171,48 @@ class Model_pegawai extends CI_Model
             ['id_pegawai' => $id_pegawai]
         );
     }
+
+      public function editUser()
+    {
+
+        $email = $this->input->post('email');
+        $data = [
+            'nama_lengkap'          => $this->input->post('nama_lengkap', TRUE),
+            'email'                 => $this->input->post('email', TRUE),
+            'kode_jabatan'          => $this->input->post('kode_jabatan', TRUE),
+            'kode_status'           => $this->input->post('kode_status', TRUE),
+            // 'role_id'               => $this->input->post('role_id', TRUE),
+        ];
+        // $name = $this->input->post('nama_lengkap');
+        // $role_id = $this->input->post('role_id');
+
+        // cek jika ada gambar yang akan diupload
+        $upload_foto = $_FILES['foto']['name'];
+
+        if ($upload_foto) {
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']      = '2048';
+            $config['upload_path'] = './assets/img/profile/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $old_foto = $data['tbl_user']['foto'];
+                if ($old_foto != 'default.png') {
+                    unlink(FCPATH . 'assets/img/profile/' . $old_foto);
+                }
+                $new_foto = $this->upload->data('file_name');
+                $this->db->set('foto', $new_foto);
+            } else {
+                echo $this->upload->dispay_errors();
+            }
+        }
+
+        // $this->db->set('nama_lengkap', $name);
+        $this->db->where('email', $email);
+        $this->db->update('tbl_pegawai', $data);
+
+        // $this->db->where('id', $id);
+        // $this->db->update('tbl_dokuments', $data);
+    }
 }

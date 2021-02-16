@@ -26,7 +26,17 @@
                             </div>
                             <?= form_error('title', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
                         </div>
-
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label col-form-label-sm" for="nama_lengkap">
+                        User
+                    </label>
+                    <div class="col-sm-5">
+                        <?php
+                        echo cmb_dinamis('nama_lengkap', 'tbl_pegawai', 'nama_lengkap', 'nama_lengkap');
+                        ?>
+                    </div>
+                    <?= form_error('nama_lengkap', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="jenis">
                         Jenis

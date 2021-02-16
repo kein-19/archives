@@ -162,4 +162,5 @@ class Pegawai extends CI_Controller
         $this->session->set_flashdata('flash', 'dihapus');
         redirect('pegawai');
     }
+    
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Model_dokuments extends CI_Model
+class Model_dokumen extends CI_Model
 {
 
     public function getAllDokuments()

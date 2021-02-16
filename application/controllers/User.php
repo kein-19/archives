@@ -17,7 +17,7 @@ class User extends CI_Controller
         $this->load->library('form_validation');
         // $this->load->library('ssp');
         $this->load->model('Model_pegawai');
-        // $this->load->model('Model_pegawai');
+        $this->load->model('Model_user');
         $this->load->model('Model_dokuments');
     }
 
@@ -48,8 +48,11 @@ class User extends CI_Controller
 
         // $data['tbl_pegawai'] = $this->db->get_where('tbl_pegawai', ['email' => $this->session->userdata('email')])->row_array();
 
-        $this->form_validation->set_rules('nama_lengkap', 'Full Name', 'required|trim');
-        $this->form_validation->set_rules('role_id', 'Role', 'required');
+        // $this->form_validation->set_rules('nama_lengkap', 'Full Name', 'required|trim');
+        $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
+        $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
+        $this->form_validation->set_rules('kode_status', 'Status', 'required');
+        // $this->form_validation->set_rules('role_id', 'Role', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/_partials/header', $data);

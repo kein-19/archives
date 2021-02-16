@@ -177,6 +177,8 @@ class Model_user extends CI_Model
         $data = [
             'nama_lengkap'          => $this->input->post('nama_lengkap', TRUE),
             'email'                 => $this->input->post('email', TRUE),
+            // 'kode_jabatan'          => $this->input->post('kode_jabatan', TRUE),
+            // 'kode_status'           => $this->input->post('kode_status', TRUE),
             // 'role_id'               => $this->input->post('role_id', TRUE),
         ];
         // $name = $this->input->post('nama_lengkap');

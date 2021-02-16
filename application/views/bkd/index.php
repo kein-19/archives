@@ -18,14 +18,14 @@
                             <p class="card-text col-sm-5">Nama Lengkap</p>
                             <p class="card-text col-sm-7"><?= $tbl_user['nama_lengkap']; ?></p>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <p class="card-text col-sm-5">Jabatan</p>
                             <p class="card-text col-sm-7"><?= $kdJabatan['jabatan']; ?></p>
                         </div>
                         <div class="form-group row">
                             <p class="card-text col-sm-5">Status</p>
                             <p class="card-text col-sm-7"><?= $kdStatus['status']; ?></p>
-                        </div>
+                        </div> -->
                         <!-- <div class="form-group row">
                             <p class="card-text col-sm-5">Role</p>
                             <?php if ($tbl_user['role_id'] == 1) : ?>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="row justify-content-end mt-3">
                     <div class="col-sm-3">
-                    <a href="<?= base_url('user/edit/'); ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
+                    <a href="<?= base_url('bkd/edit'); ?>" class="print btn btn-primary btn-block" role="button">Edit</a>
                     </div>
                     </div>
         </div>

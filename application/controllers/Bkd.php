@@ -49,7 +49,8 @@ class Bkd extends CI_Controller
         // $data['tbl_user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('nama_lengkap', 'Full Name', 'required|trim');
-        $this->form_validation->set_rules('role_id', 'Role', 'required');
+        // $this->form_validation->set_rules('kode_jabatan', 'Jabatan', 'required');
+        // $this->form_validation->set_rules('kode_status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin/header', $data);
@@ -60,7 +61,7 @@ class Bkd extends CI_Controller
         } else {
             $this->Model_user->editUser();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
-            redirect('user');
+            redirect('bkd');
         }
     }
 

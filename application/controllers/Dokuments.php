@@ -30,7 +30,7 @@ class Dokuments extends CI_Controller
         // config
         $this->db->like('title', $data['keyword']);
         $this->db->or_like('nomor', $data['keyword']);
-        $this->db->or_like('jenis', $data['keyword']);
+        $this->db->or_like('nama_lengkap', $data['keyword']);
                 
         $this->db->from('tbl_dokuments');
         $config['total_rows'] = $this->db->count_all_results();
@@ -60,6 +60,7 @@ class Dokuments extends CI_Controller
         
         // $this->form_validation->set_rules('nomor', 'Nomor', 'required|trim');
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
+        $this->form_validation->set_rules('nama_lengkap', 'User', 'required');
         $this->form_validation->set_rules('jenis', 'Jenis', 'required');
         $this->form_validation->set_rules('kelompok_id', 'Kelompok', 'required');
         $this->form_validation->set_rules('tgl_surat', 'Tanggal Surat', 'required');

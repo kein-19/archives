@@ -14,7 +14,7 @@
                     Email
                 </label>
                 <div class="col-sm-7">
-                    <input type="text" name="email" placeholder="Email" id="email" class="form-control form-control-sm" value="<?= $tbl_user['email']; ?>" readonly>
+                    <input type="text" name="email" placeholder="Email" id="email" class="form-control form-control-sm" value="<?= $tbl_pegawai['email']; ?>" readonly>
                 </div>
                 <!-- <?= form_error('email', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?> -->
             </div>
@@ -23,7 +23,7 @@
                     Nama Lengkap
                 </label>
                 <div class="col-sm-7">
-                    <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" id="nama_lengkap" class="form-control form-control-sm" value="<?= $tbl_user['nama_lengkap']; ?>">
+                    <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" id="nama_lengkap" class="form-control form-control-sm" value="<?= $tbl_pegawai['nama_lengkap']; ?>">
                 </div>
                 <?= form_error('nama_lengkap', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
             </div>
@@ -62,7 +62,7 @@
                             2 => 'Pegawai',
                             3 => 'Badan Kepegawaian Daerah'
                         );
-                        $pilih = $tbl_user['role_id'];
+                        $pilih = $tbl_pegawai['role_id'];
                         echo form_dropdown(
                             'role_id',
                             $role_id,
@@ -72,11 +72,11 @@
                         ?>
                     </div>
                     <?= form_error('role_id', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-                    <?php if ($tbl_user['role_id'] == 1) : ?>
+                    <?php if ($tbl_pegawai['role_id'] == 1) : ?>
                     <i class="col-form-label col-form-label"></i>
-                    <?php elseif ($tbl_user['role_id'] == 2) : ?>
+                    <?php elseif ($tbl_pegawai['role_id'] == 2) : ?>
                     <i class="col-form-label col-form-label"></i>
-                    <?php elseif ($tbl_user['role_id'] == 3) : ?>
+                    <?php elseif ($tbl_pegawai['role_id'] == 3) : ?>
                     <i class="col-form-label col-form-label"></i>
                     <?php endif; ?>
                 </div> -->
@@ -85,10 +85,10 @@
                     Foto
             </label>
             <div class="col-sm-7">
-                <img src="<?= base_url('assets/img/profile/') . $tbl_user['foto'] ?>" class="img-thumbnail mb-sm-3 p-sm-2">
+                <img src="<?= base_url('assets/img/profile/') . $tbl_pegawai['foto'] ?>" class="img-thumbnail mb-sm-3 p-sm-2">
                 <div class="custom-file col-form-label col-form-label-sm">
                     <input type="file" class="custom-file-input" id="foto" name="foto">
-                    <label class="custom-file-label" for="foto"><?= $tbl_user['foto']; ?></label>
+                    <label class="custom-file-label" for="foto"><?= $tbl_pegawai['foto']; ?></label>
                 </div>
             </div>
             </div>

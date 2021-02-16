@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-8">
 
-            <?= form_open_multipart('user/edit'); ?>
+            <?= form_open_multipart('bkd/edit'); ?>
             <div class="form-group row">
                 <label class="col-sm-5 col-form-label col-form-label" for="email">
                     Email
@@ -27,7 +27,7 @@
                 </div>
                 <?= form_error('nama_lengkap', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3">', '</small>'); ?>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label-sm" for="jabatan">
                         Jabatan
                     </label>
@@ -49,7 +49,7 @@
                         ?>
                     </div>
                     <?= form_error('kode_status', '<div class="col-sm-5"></div><small class="text-danger mt-sm-1 pl-3 col-sm-7">', '</small>'); ?>
-            </div>
+            </div> -->
             <!-- <div class="form-group row">
                     <label class="col-sm-5 col-form-label col-form-label" for="role_id">
                         Role
